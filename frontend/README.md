@@ -1,24 +1,13 @@
-# two-checker
+# 培训信息管理系统
 
-## Project setup
-```
-npm install
-```
+大二时期的系统分析大作业。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+前台+后台：前台软件公司和学员报名，后台经理和执行人管理培训信息。
 
-### Compiles and minifies for production
-```
-npm run build
-```
+框架：Vue3 + NaiveUI + Typescript
 
-### Lints and fixes files
-```
-npm run lint
-```
+## 项目启动
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```pnpm
+pnpm install
+```
