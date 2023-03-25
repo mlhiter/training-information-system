@@ -2,13 +2,13 @@ package controller
 
 import (
 	//需要用到的结构体
-	"go-gin-gorm/go/entity"
+	"backend/go/entity"
 	//gin框架的依赖
 	"github.com/gin-gonic/gin"
 	//http连接包
 	"net/http"
 	//service层方法
-	"go-gin-gorm/go/service"
+	"backend/go/service"
 )
 
 func CreateUser(c *gin.Context) {

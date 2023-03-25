@@ -1,4 +1,4 @@
-module go-gin-gorm
+module backend
 
 go 1.17
 

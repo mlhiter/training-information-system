@@ -1,8 +1,8 @@
 package routes
 
 import (
+	"backend/go/controller"
 	"github.com/gin-gonic/gin"
-	"go-gin-gorm/go/controller"
 )
 
 func SetRouter() *gin.Engine {
@@ -20,6 +20,11 @@ func SetRouter() *gin.Engine {
 		//userGroup.PUT("/users/:id",controller.UpdateUser)
 		//删除某个User
 		//userGroup.DELETE("/users/:id",controller.DeleteUserById)
+	}
+
+	courseGroup := r.Group("course")
+	{
+		courseGroup.POST("/courses")
 	}
 
 	return r

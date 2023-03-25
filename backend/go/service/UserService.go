@@ -1,8 +1,8 @@
 package service
 
 import (
-	"go-gin-gorm/go/dao"
-	"go-gin-gorm/go/entity"
+	"backend/go/dao"
+	"backend/go/entity"
 )
 
 /*
