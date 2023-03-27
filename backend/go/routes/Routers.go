@@ -21,10 +21,12 @@ func SetRouter() *gin.Engine {
 		//删除某个User
 		//userGroup.DELETE("/users/:id",controller.DeleteUserById)
 	}
-
-	courseGroup := r.Group("course")
+	/*
+	  Student 路由组
+	*/
+	courseGroup := r.Group("student")
 	{
-		courseGroup.POST("/courses")
+		courseGroup.POST("/students", controller.CreateStudent)
 	}
 
 	return r
