@@ -17,7 +17,6 @@ func main() {
 	defer dao.Close()
 	//绑定模型
 	dao.SqlSession.AutoMigrate(&entity.User{})
-
 	dao.SqlSession.AutoMigrate(&entity.CheckInRecord{})
 	dao.SqlSession.AutoMigrate(&entity.Course{})
 	dao.SqlSession.AutoMigrate(&entity.EmailContent{})
@@ -28,10 +27,8 @@ func main() {
 	dao.SqlSession.AutoMigrate(&entity.Register{})
 	dao.SqlSession.AutoMigrate(&entity.Student{})
 	dao.SqlSession.AutoMigrate(&entity.StudentCourse{})
-	dao.SqlSession.AutoMigrate(&entity.SummaryReport{})
 	dao.SqlSession.AutoMigrate(&entity.TrainingApplication{})
 	dao.SqlSession.AutoMigrate(&entity.TrainingNotice{})
-
 	//注册路由
 	r := routes.SetRouter()
 	//启动端口为8081的项目

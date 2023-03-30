@@ -38,7 +38,7 @@ func (c *conf) getConf() *conf {
 	return c
 }
 
-// InitMySql 初始化连接数据库，生成可操作基本增删改查结构的变量
+// initMySql 初始化连接数据库，生成可操作基本增删改查结构的变量
 func InitMySql() (err error) {
 	var c conf
 	//获取yaml配置参数
