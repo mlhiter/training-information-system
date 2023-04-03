@@ -12,4 +12,10 @@ type Student struct {
 	CourseId  uint   `json:"courseId"`
 	StudentId uint   `json:"studentId"`
 	CheckTime string `json:"checkTime"`
+	Name      string `json:"name"`
+	Sex       string `json:"sex"`
+	Contact   string `json:"contact"`
+	Company   string `json:"company"`
+	Post      string `json:"post"`
+	Level     string `json:"level"`
 }
