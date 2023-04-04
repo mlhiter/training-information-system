@@ -82,9 +82,9 @@ func SetRouter() *gin.Engine {
 	// 问卷
 	questionnaireGroup := r.Group("api/questionnaire")
 	{
-		questionnaireGroup.GET("/list")
-		questionnaireGroup.POST("/add")
-		questionnaireGroup.DELETE("/delete")
+		questionnaireGroup.GET("/list", controller.GetQuestionnaireList)
+		questionnaireGroup.POST("/add", controller.CreateQuestionnaire)
+		questionnaireGroup.DELETE("/delete", controller.DeleteQuestionnaire)
 	}
 	/*
 		后台界面 - 经理界面

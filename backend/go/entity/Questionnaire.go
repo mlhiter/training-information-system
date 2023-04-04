@@ -10,7 +10,9 @@ func (Questionnaire) TableName() string {
 type Questionnaire struct {
 	gorm.Model
 	CourseId     uint   `json:"courseId"`
+	CourseName   string `json:"courseName"`
 	StudentId    uint   `json:"studentId"`
+	StudentName  string `json:"studentName"`
 	Satisfaction int    `json:"satisfaction"`
 	Comment      string `json:"comment"`
 	Suggestion   string `json:"suggestion"`
