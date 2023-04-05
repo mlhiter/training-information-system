@@ -18,8 +18,8 @@ func CreateQuestionnaire(createQuestionnaireRequest *request.CreateQuestionnaire
 	questionnaire.Suggestion = createQuestionnaireRequest.Suggestion
 	student, err := GetStudentById(createQuestionnaireRequest.StudentId)
 	questionnaire.StudentName = student.Name
-	//course, err := GetCourseById(createQuestionnaireRequest.CourseId)
-	//questionnaire.courseName = course.Name
+	course, err := GetCourseById(createQuestionnaireRequest.CourseId)
+	questionnaire.CourseName = course.Name
 	if err = dao.SqlSession.Create(questionnaire).Error; err != nil {
 		return err
 	}

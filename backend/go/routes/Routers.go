@@ -29,15 +29,15 @@ func SetRouter() *gin.Engine {
 	{
 		// 权限认证
 		// 登录
-		frontEndGroup.POST("/login")
+		frontEndGroup.POST("/login", controller.CreateUser)
 		// 注册
-		frontEndGroup.POST("/signup")
+		frontEndGroup.POST("/signup", controller.LoginUser)
 
 		// 前台界面
 		// 个人报名
 		frontEndGroup.POST("/enroll/individual")
 		// 团体报名
-		frontEndGroup.POST("/enroll/organisation")
+		frontEndGroup.POST("/enroll/organisation", controller.CreateTrainingApplication)
 		// 获取缴费账单
 		frontEndGroup.POST("/pay/individual")
 		// 获取团体缴费账单
@@ -55,22 +55,22 @@ func SetRouter() *gin.Engine {
 	// 报名
 	enrollGroup := r.Group("api/enroll")
 	{
-		enrollGroup.GET("/list")
-		enrollGroup.POST("/review")
+		enrollGroup.GET("/list", controller.GetRegisterList)
+		enrollGroup.POST("/review", controller.UpdateRegister)
 	}
 	// 讲师
 	lecturerGroup := r.Group("api/lecturer")
 	{
-		lecturerGroup.GET("/list")
-		lecturerGroup.POST("/add")
-		lecturerGroup.DELETE("/delete")
+		lecturerGroup.GET("/list", controller.GetLecturerList)
+		lecturerGroup.POST("/add", controller.CreateLecturer)
+		lecturerGroup.DELETE("/delete", controller.DeleteLecturer)
 	}
-	// 讲师
+	// 课程
 	trainingGroup := r.Group("api/training")
 	{
-		trainingGroup.GET("/list")
-		trainingGroup.POST("/add")
-		trainingGroup.DELETE("/delete")
+		trainingGroup.GET("/list", controller.GetCourseList)
+		trainingGroup.POST("/add", controller.CreateCourse)
+		trainingGroup.DELETE("/delete", controller.DeleteCourse)
 	}
 	// 学生
 	studentGroup := r.Group("api/student")
@@ -92,9 +92,9 @@ func SetRouter() *gin.Engine {
 	// 执行人
 	executorGroup := r.Group("api/executor")
 	{
-		executorGroup.GET("/list")
-		executorGroup.POST("/add")
-		executorGroup.DELETE("/delete")
+		executorGroup.GET("/list", controller.GetExecutorList)
+		executorGroup.POST("/add", controller.CreateExecutor)
+		executorGroup.DELETE("/delete", controller.DeleteExecutor)
 	}
 	// 课程收入
 	incomeGroup := r.Group("api/income")

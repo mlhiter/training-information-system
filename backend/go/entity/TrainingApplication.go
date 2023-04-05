@@ -9,8 +9,9 @@ func (TrainingApplication) TableName() string {
 
 type TrainingApplication struct {
 	gorm.Model
-	TrainingDate    string `json:"name"`
-	TrainingContext string `json:"sex"`
-	NumberOfPeople  int    `json:"companyName"`
 	Applicant       string `json:"applicant"`
+	TrainingDate    string `json:"trainingDate"`
+	TrainingContext string `json:"trainingContext"`
+	NumberOfPeople  int    `json:"numberOfPeople"`
+	status          string `json:"status"`
 }

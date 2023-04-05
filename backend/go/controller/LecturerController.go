@@ -3,7 +3,6 @@ package controller
 import (
 	//需要用到的结构体
 	"backend/go/entity"
-	"backend/go/request"
 	//gin框架的依赖
 	"github.com/gin-gonic/gin"
 	//http连接包
@@ -12,10 +11,10 @@ import (
 	"backend/go/service"
 )
 
-func CreateQuestionnaire(c *gin.Context) {
-	var createQuestionnaireRequest request.CreateQuestionnaireRequest
-	c.BindJSON(&createQuestionnaireRequest)
-	err := service.CreateQuestionnaire(&createQuestionnaireRequest)
+func CreateLecturer(c *gin.Context) {
+	var lecturer entity.Lecturer
+	c.BindJSON(&lecturer)
+	err := service.CreateLecturer(&lecturer)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	} else {
@@ -26,23 +25,23 @@ func CreateQuestionnaire(c *gin.Context) {
 	}
 }
 
-func GetQuestionnaireList(c *gin.Context) {
-	questionnaireList, err := service.GetAllQuestionnaire()
+func GetLecturerList(c *gin.Context) {
+	lecturerList, err := service.GetAllLecturer()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	} else {
 		c.JSON(http.StatusOK, gin.H{
 			"code": 200,
 			"msg":  "success",
-			"data": questionnaireList,
+			"data": lecturerList,
 		})
 	}
 }
 
-func DeleteQuestionnaire(c *gin.Context) {
-	var questionnaire entity.Questionnaire
-	c.BindJSON(&questionnaire)
-	err := service.DeleteQuestionnaireById(questionnaire.ID)
+func DeleteLecturer(c *gin.Context) {
+	var lecturer entity.Lecturer
+	c.BindJSON(&lecturer)
+	err := service.DeleteStudentById(lecturer.ID)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	} else {

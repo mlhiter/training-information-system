@@ -3,7 +3,6 @@ package controller
 import (
 	//需要用到的结构体
 	"backend/go/entity"
-	"backend/go/request"
 	//gin框架的依赖
 	"github.com/gin-gonic/gin"
 	//http连接包
@@ -12,10 +11,10 @@ import (
 	"backend/go/service"
 )
 
-func CreateQuestionnaire(c *gin.Context) {
-	var createQuestionnaireRequest request.CreateQuestionnaireRequest
-	c.BindJSON(&createQuestionnaireRequest)
-	err := service.CreateQuestionnaire(&createQuestionnaireRequest)
+func CreateTrainingNotice(c *gin.Context) {
+	var trainingNotice entity.TrainingNotice
+	c.BindJSON(&trainingNotice)
+	err := service.CreateTrainingNotice(&trainingNotice)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	} else {
@@ -26,23 +25,23 @@ func CreateQuestionnaire(c *gin.Context) {
 	}
 }
 
-func GetQuestionnaireList(c *gin.Context) {
-	questionnaireList, err := service.GetAllQuestionnaire()
+func GetTrainingNoticeList(c *gin.Context) {
+	trainingNoticeList, err := service.GetAllTrainingNotice()
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	} else {
 		c.JSON(http.StatusOK, gin.H{
 			"code": 200,
 			"msg":  "success",
-			"data": questionnaireList,
+			"data": trainingNoticeList,
 		})
 	}
 }
 
-func DeleteQuestionnaire(c *gin.Context) {
-	var questionnaire entity.Questionnaire
-	c.BindJSON(&questionnaire)
-	err := service.DeleteQuestionnaireById(questionnaire.ID)
+func DeleteTrainingNotice(c *gin.Context) {
+	var trainingNotice entity.TrainingNotice
+	c.BindJSON(&trainingNotice)
+	err := service.DeleteStudentById(trainingNotice.ID)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	} else {

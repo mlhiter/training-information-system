@@ -36,6 +36,16 @@ func DeleteUserById(id string) (err error) {
 /*
 根据id查询用户User
 */
+func GetUserByUserName(userName string) (user *entity.User, err error) {
+	if err = dao.SqlSession.Where("user_name=?", userName).First(user).Error; err != nil {
+		return nil, err
+	}
+	return
+}
+
+/*
+根据userName查询用户User
+*/
 func GetUserById(id string) (user *entity.User, err error) {
 	if err = dao.SqlSession.Where("id=?", id).First(user).Error; err != nil {
 		return nil, err

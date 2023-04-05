@@ -19,14 +19,15 @@ func main() {
 	dao.SqlSession.AutoMigrate(&entity.User{})
 	dao.SqlSession.AutoMigrate(&entity.CheckInRecord{})
 	dao.SqlSession.AutoMigrate(&entity.Course{})
-	dao.SqlSession.AutoMigrate(&entity.EmailContent{})
 	dao.SqlSession.AutoMigrate(&entity.Executor{})
 	dao.SqlSession.AutoMigrate(&entity.Lecturer{})
+	
 	dao.SqlSession.AutoMigrate(&entity.PaymentRecord{})
 	dao.SqlSession.AutoMigrate(&entity.Questionnaire{})
 	dao.SqlSession.AutoMigrate(&entity.Register{})
 	dao.SqlSession.AutoMigrate(&entity.Student{})
 	dao.SqlSession.AutoMigrate(&entity.StudentCourse{})
+
 	dao.SqlSession.AutoMigrate(&entity.TrainingApplication{})
 	dao.SqlSession.AutoMigrate(&entity.TrainingNotice{})
 	//注册路由
