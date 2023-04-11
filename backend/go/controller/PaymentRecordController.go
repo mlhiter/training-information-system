@@ -38,6 +38,19 @@ func GetPaymentRecordList(c *gin.Context) {
 	}
 }
 
+func GetPaymentRecordListByStudentId(c *gin.Context) {
+	paymentRecordList, err := service.GetAllPaymentRecord()
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	} else {
+		c.JSON(http.StatusOK, gin.H{
+			"code": 200,
+			"msg":  "success",
+			"data": paymentRecordList,
+		})
+	}
+}
+
 func UpdatePaymentRecord(c *gin.Context) {
 	var paymentRecord entity.PaymentRecord
 	c.BindJSON(&paymentRecord)

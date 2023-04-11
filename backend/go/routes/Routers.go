@@ -40,10 +40,6 @@ func SetRouter() *gin.Engine {
 		frontEndGroup.POST("/enroll/organisation", controller.CreateTrainingApplication)
 		// 获取缴费账单
 		frontEndGroup.POST("/pay/individual")
-		// 获取团体缴费账单
-		frontEndGroup.POST("/pay/organisation")
-		// 团体上传报名名单
-		frontEndGroup.POST("/api/enroll/organisation/excel")
 		// 签到
 		frontEndGroup.POST("/inplace")
 		// 问卷
@@ -104,8 +100,8 @@ func SetRouter() *gin.Engine {
 	// 培训审核
 	enrollOrganisationGroup := r.Group("api/enroll/organisation")
 	{
-		enrollOrganisationGroup.GET("/list")
-		enrollOrganisationGroup.POST("/review")
+		enrollOrganisationGroup.GET("/list", controller.GetTrainingApplicationList)
+		enrollOrganisationGroup.POST("/review", controller.UpdateTrainingApplication)
 	}
 
 	/*
