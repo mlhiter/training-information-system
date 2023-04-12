@@ -50,3 +50,10 @@ func UpdateStudent(student *entity.Student) (err error) {
 	err = dao.SqlSession.Save(student).Error
 	return
 }
+
+func GetStudentByStudentName(studentName string) (student *entity.Student, err error) {
+	if err = dao.SqlSession.Where("name=?", studentName).First(student).Error; err != nil {
+		return nil, err
+	}
+	return
+}

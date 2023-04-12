@@ -16,10 +16,6 @@ func SetRouter() *gin.Engine {
 		userGroup.POST("/users", controller.CreateUser)
 		//查看所有的User
 		userGroup.GET("/users", controller.GetUserList)
-		//修改某个User
-		//userGroup.PUT("/users/:id",controller.UpdateUser)
-		//删除某个User
-		//userGroup.DELETE("/users/:id",controller.DeleteUserById)
 	}
 	/*
 		权限认证
@@ -35,15 +31,15 @@ func SetRouter() *gin.Engine {
 
 		// 前台界面
 		// 个人报名
-		frontEndGroup.POST("/enroll/individual")
+		frontEndGroup.POST("/enroll/individual", controller.CreateRegister)
 		// 团体报名
 		frontEndGroup.POST("/enroll/organisation", controller.CreateTrainingApplication)
 		// 获取缴费账单
-		frontEndGroup.POST("/pay/individual")
+		frontEndGroup.POST("/pay/individual", controller.GetPaymentRecordListByStudentName)
 		// 签到
-		frontEndGroup.POST("/inplace")
+		frontEndGroup.POST("/inplace", controller.CreateCheckInRecordByStudentNameAndCourseName)
 		// 问卷
-		frontEndGroup.POST("/questionnaire")
+		frontEndGroup.POST("/questionnaire", controller.CreateQuestionnaire)
 	}
 	/*
 		后台界面 - 执行人界面

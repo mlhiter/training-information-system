@@ -11,15 +11,13 @@ import (
 */
 func CreateQuestionnaire(createQuestionnaireRequest *request.CreateQuestionnaireRequest) (err error) {
 	var questionnaire entity.Questionnaire
-	questionnaire.StudentId = createQuestionnaireRequest.StudentId
-	questionnaire.CourseId = createQuestionnaireRequest.CourseId
 	questionnaire.Satisfaction = createQuestionnaireRequest.Satisfaction
 	questionnaire.Comment = createQuestionnaireRequest.Comment
 	questionnaire.Suggestion = createQuestionnaireRequest.Suggestion
-	student, err := GetStudentById(createQuestionnaireRequest.StudentId)
-	questionnaire.StudentName = student.Name
-	course, err := GetCourseById(createQuestionnaireRequest.CourseId)
-	questionnaire.CourseName = course.Name
+	student, err := GetStudentByStudentName(createQuestionnaireRequest.StudentName)
+	questionnaire.StudentId = student.ID
+	course, err := GetCourseByCourseName(createQuestionnaireRequest.CourseName)
+	questionnaire.CourseId = course.ID
 	if err = dao.SqlSession.Create(questionnaire).Error; err != nil {
 		return err
 	}

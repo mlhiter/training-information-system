@@ -12,6 +12,11 @@ import (
 )
 
 func CreateRegister(c *gin.Context) {
+	// student_course
+
+	// register
+
+	// payment_record
 	var register entity.Register
 	c.BindJSON(&register)
 	err := service.CreateRegister(&register)

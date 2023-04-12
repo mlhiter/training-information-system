@@ -11,5 +11,4 @@ type CheckInRecord struct {
 	gorm.Model
 	CourseId  uint   `json:"courseId"`
 	StudentId uint   `json:"studentId"`
-	CheckTime string `json:"checkTime"`
 }

@@ -50,3 +50,10 @@ func UpdateCourse(course *entity.Course) (err error) {
 	err = dao.SqlSession.Save(course).Error
 	return
 }
+
+func GetCourseByCourseName(courseName string) (course *entity.Course, err error) {
+	if err = dao.SqlSession.Where("name=?", courseName).First(course).Error; err != nil {
+		return nil, err
+	}
+	return
+}
