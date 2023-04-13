@@ -13,6 +13,8 @@ type Course struct {
 	ClassTime        string  `json:"classTime"`
 	PlaceOfClass     string  `json:"placeOfClass"`
 	Price            float64 `json:"price"`
+	SelectedNumber   uint
+	Income			 float64
 	LecturerId       uint    `json:"lecturerId"`
 	ExecutorId       uint    `json:"executorId"`
 	EmailContentId   uint    `json:"EmailContentId"`

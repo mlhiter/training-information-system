@@ -14,4 +14,5 @@ type PaymentRecord struct {
 	PaymentAmount float64 `json:"paymentAmount"`
 	PaymentTime   string  `json:"paymentTime"`
 	Payee         string  `json:"payee"`
+	PayAccount    string  `json:"payAccount"`
 }

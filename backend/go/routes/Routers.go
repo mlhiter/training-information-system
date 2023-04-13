@@ -91,7 +91,7 @@ func SetRouter() *gin.Engine {
 	// 课程收入
 	incomeGroup := r.Group("api/income")
 	{
-		incomeGroup.GET("/list")
+		incomeGroup.GET("/list", controller.GetIncomeList)
 	}
 	// 培训审核
 	enrollOrganisationGroup := r.Group("api/enroll/organisation")
@@ -106,7 +106,7 @@ func SetRouter() *gin.Engine {
 	// 现场学员名单
 	sceneGroup := r.Group("/api/scene")
 	{
-		sceneGroup.GET("/list")
+		sceneGroup.GET("/list", controller.GetStudentCourseListByCourseName)
 	}
 	return r
 }

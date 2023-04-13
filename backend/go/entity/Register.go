@@ -9,12 +9,12 @@ func (Register) TableName() string {
 
 type Register struct {
 	gorm.Model
-	courseId  string `json:"courseId"`
-	Name      string `json:"name"`
-	Sex       string `json:"sex"`
-	Company   string `json:"company"`
-	Post      string `json:"Post"`
-	Level     string `json:"Level"`
-	Contact   string `json:"contact"`
-	Status    string `json:"Status"`
+	CourseName string  `json:"courseName"`
+	Name       string  `json:"name"`
+	Sex        string  `json:"sex"`
+	Company    string  `json:"company"`
+	Post       string  `json:"post"`
+	Level      string  `json:"level"`
+	Contact    string  `json:"contact"`
+	Status     string  `json:"status"`
 }

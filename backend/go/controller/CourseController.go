@@ -25,6 +25,22 @@ func CreateCourse(c *gin.Context) {
 	}
 }
 
+func GetIncomeList(c *gin.Context) {
+	courseList, err := service.GetAllCourse()
+	for _, course := range courseList {
+		course.Income = course.Price * float64(course.SelectedNumber)
+	}
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+	} else {
+		c.JSON(http.StatusOK, gin.H{
+			"code": 200,
+			"msg":  "success",
+			"data": courseList,
+		})
+	}
+}
+
 func GetCourseList(c *gin.Context) {
 	courseList, err := service.GetAllCourse()
 	if err != nil {

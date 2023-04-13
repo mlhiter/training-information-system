@@ -25,6 +25,14 @@ func GetAllStudentCourse() (studentCourseList []*entity.StudentCourse, err error
 	return
 }
 
+func GetStudentCourseListByCourseName(courseId uint) (studentCourseList []*entity.StudentCourse, err error) {
+	if err = dao.SqlSession.Where("course_id", courseId).Find(&studentCourseList).Error; err != nil {
+		return nil, err
+	}
+	return
+}
+
+
 /*
 根据id删除课程
 */

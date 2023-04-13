@@ -5,9 +5,13 @@ import (
 	"backend/go/entity"
 	"backend/go/routes"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
+	_ "github.com/swaggo/gin-swagger/example/basic/docs"
 )
 
 func main() {
+	//gin.SetMode(gin.ReleaseMode)
 	//连接数据库
 	err := dao.InitMySql()
 	if err != nil {
@@ -32,6 +36,10 @@ func main() {
 	dao.SqlSession.AutoMigrate(&entity.TrainingNotice{})
 	//注册路由
 	r := routes.SetRouter()
+
+	url := ginSwagger.URL("http://localhost:8081/swagger/doc.json") // The url pointing to API definition
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler, url))
+
 	//启动端口为8081的项目
 	r.Run(":8081")
 }
