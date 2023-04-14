@@ -44,7 +44,7 @@ func GetStudentCourseListByCourseName(c *gin.Context) {
 	var getStudentCourseRequest request.GetStudentCourseRequest
 	c.BindJSON(&getStudentCourseRequest)
 	course, _ := service.GetCourseByCourseName(getStudentCourseRequest.CourseName)
-	studentCourseList, err := service.GetStudentCourseListByCourseName(course.ID)
+	studentCourseList, err := service.GetStudentCourseListByCourseId(course.ID)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	} else {

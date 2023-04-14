@@ -13,5 +13,5 @@ type TrainingApplication struct {
 	TrainingDate    string `json:"trainingDate"`
 	TrainingContext string `json:"trainingContext"`
 	NumberOfPeople  int    `json:"numberOfPeople"`
-	status          string `json:"status"`
+	Status          string `json:"status"`
 }

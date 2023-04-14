@@ -47,6 +47,6 @@ func GetRegisterById(id uint) (register *entity.Register, err error) {
 更新学生信息
 */
 func UpdateRegister(register *entity.Register) (err error) {
-	err = dao.SqlSession.Save(register).Error
+	err = dao.SqlSession.Model(register).Update("status", register.Status).Error
 	return
 }

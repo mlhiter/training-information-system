@@ -9,7 +9,7 @@ func (Executor) TableName() string {
 
 type Executor struct {
 	gorm.Model
-	Name          string `json:"name"`
-	ClassTime     string `json:"classTime"`
-	WorkCondition string `json:"workCondition"`
+	Name        string   `json:"name"`
+	Course      string   `json:"course"`
+	Condition   string   `json:"condition"`
 }

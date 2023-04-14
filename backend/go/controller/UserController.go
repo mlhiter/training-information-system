@@ -50,8 +50,7 @@ func LoginUser(c *gin.Context) {
 		if u.Password == user.Password && u.Role == user.Role {
 			c.JSON(http.StatusOK, gin.H{
 				"code": 200,
-				"msg":  "success",
-				"data": user,
+				"msg":  "登录成功",
 			})
 		} else {
 			c.JSON(http.StatusBadRequest, gin.H{

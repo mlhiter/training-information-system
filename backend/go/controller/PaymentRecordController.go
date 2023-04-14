@@ -41,6 +41,7 @@ func GetPaymentRecordList(c *gin.Context) {
 
 func GetPaymentRecordListByStudentName(c *gin.Context) {
 	var getPaymentRecordRequest request.GetPaymentRecordRequest
+	c.BindJSON(&getPaymentRecordRequest)
 	student , _ := service.GetStudentByStudentName(getPaymentRecordRequest.StudentName)
 	paymentRecordList, err := service.GetAllPaymentRecordByStudentId(student.ID)
 	if err != nil {

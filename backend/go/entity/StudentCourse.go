@@ -9,6 +9,8 @@ func (StudentCourse) TableName() string {
 
 type StudentCourse struct {
 	gorm.Model
-	CourseId  uint `json:"courseId"`
-	StudentId uint `json:"studentId"`
+	CourseId      uint     `json:"courseId"`
+	CourseName    string   `json:"courseName"`
+	StudentId     uint     `json:"studentId"`
+	StudentName   string   `json:"studentName"`
 }
