@@ -5,13 +5,12 @@ import { executorRoutes } from './executor'
 import { managerRoutes } from './manager'
 import { operatorRoutes } from './operator'
 import { userRoutes } from './user'
-
 //登录路由
 const authRoutes: RouteRecordRaw[] = [
   {
-    path: '/auth',
+    path: '/',
     component: () =>
-      import(/* webpackChunkName: "auth" */ '@/pages/auth/enroll/index.vue'),
+      import(/* webpackChunkName: "auth" */ '@/pages/auth/index.vue'),
     meta: {
       title: '权限认证',
       requiredAuth: false,
@@ -21,7 +20,7 @@ const authRoutes: RouteRecordRaw[] = [
 // 前台路由表
 const frontRoutes: RouteRecordRaw[] = [
   {
-    path: '/', // 前台layout
+    path: '/frontstage', // 前台layout
     name: 'FrontLayout',
     component: frontstageLayout,
     redirect: '/frontstage/enroll',

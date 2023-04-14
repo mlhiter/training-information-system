@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { constRoutes } from './routes'
+import { getAuth } from '@/utils/token'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -14,7 +15,7 @@ router.beforeEach((to, from, next) => {
   if (subtitle) {
     document.title = subtitle
   }
-  //根据权限认证进行路由跳转
+  next()
 })
 
 export default router
