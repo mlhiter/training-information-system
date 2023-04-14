@@ -5,6 +5,7 @@ declare module 'vue-router' {
   interface RouteMeta {
     title?: string
     icon?: title
+    requiredAuth?: boolean
     role?: string // 路由权限 admin/editor/*
     hideInMenu?: boolean // 是否在导航菜单中隐藏
     hideChildrenInMenu?: boolean // 是否在导航菜单中隐藏子路由

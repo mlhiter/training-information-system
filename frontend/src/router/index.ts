@@ -7,35 +7,14 @@ const router = createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
-//路由守卫
-router.beforeEach(async (to) => {
+// 添加路由守卫
+router.beforeEach((to, from, next) => {
   // 更新标题栏title
   const subtitle = to.meta.title
   if (subtitle) {
     document.title = subtitle
   }
+  //根据权限认证进行路由跳转
 })
-// 添加路由守卫
-// router.beforeEach((to, from, next) => {
-//   const role = to.meta.role
-//   const currentUser = getAuth().currentUser
-//   if (currentUser) {
-//     // 判断角色是否匹配
-//     if (role === 'executor' && currentUser.role === 'executor') {
-//       next()
-//     } else if (role === 'manager' && currentUser.role === 'manager') {
-//       next()
-//     } else if (role === 'operator' && currentUser.role === 'operator') {
-//       next()
-//     } else {
-//       next('/login')
-//     }
-//   } else {
-//     next({
-//       path: '/login',
-//       query: { redirect: to.fullPath },
-//     })
-//   }
-// })
 
 export default router
