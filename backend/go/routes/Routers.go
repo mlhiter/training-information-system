@@ -25,9 +25,9 @@ func SetRouter() *gin.Engine {
 	{
 		// 权限认证
 		// 登录
-		frontEndGroup.POST("/login", controller.CreateUser)
+		frontEndGroup.POST("/login", controller.LoginUser)
 		// 注册
-		frontEndGroup.POST("/signup", controller.LoginUser)
+		frontEndGroup.POST("/signup", controller.CreateUser)
 
 		// 前台界面
 		// 个人报名
@@ -35,7 +35,7 @@ func SetRouter() *gin.Engine {
 		// 团体报名
 		frontEndGroup.POST("/enroll/organisation", controller.CreateTrainingApplication)
 		// 获取缴费账单
-		frontEndGroup.POST("/pay/individual", controller.GetPaymentRecordListByStudentName)
+		frontEndGroup.GET("/pay/individual", controller.GetPaymentRecordListByStudentName)
 		// 签到
 		frontEndGroup.POST("/inplace", controller.CreateCheckInRecordByStudentNameAndCourseName)
 		// 问卷
@@ -48,7 +48,7 @@ func SetRouter() *gin.Engine {
 	enrollGroup := r.Group("api/enroll")
 	{
 		enrollGroup.GET("/list", controller.GetRegisterList)
-		enrollGroup.POST("/review", controller.UpdateRegister)
+		enrollGroup.PUT("/review", controller.UpdateRegister)
 	}
 	// 讲师
 	lecturerGroup := r.Group("api/lecturer")
@@ -97,7 +97,7 @@ func SetRouter() *gin.Engine {
 	enrollOrganisationGroup := r.Group("api/enroll/organisation")
 	{
 		enrollOrganisationGroup.GET("/list", controller.GetTrainingApplicationList)
-		enrollOrganisationGroup.POST("/review", controller.UpdateTrainingApplication)
+		enrollOrganisationGroup.PUT("/review", controller.UpdateTrainingApplication)
 	}
 
 	/*

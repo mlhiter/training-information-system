@@ -14,11 +14,11 @@ func CreateQuestionnaire(createQuestionnaireRequest *request.CreateQuestionnaire
 	questionnaire.Satisfaction = createQuestionnaireRequest.Satisfaction
 	questionnaire.Comment = createQuestionnaireRequest.Comment
 	questionnaire.Suggestion = createQuestionnaireRequest.Suggestion
-	student, err := GetStudentByStudentName(createQuestionnaireRequest.StudentName)
+	student, _ := GetStudentByStudentName(createQuestionnaireRequest.StudentName)
 	questionnaire.StudentId = student.ID
-	course, err := GetCourseByCourseName(createQuestionnaireRequest.CourseName)
+	course, _ := GetCourseByCourseName(createQuestionnaireRequest.CourseName)
 	questionnaire.CourseId = course.ID
-	if err = dao.SqlSession.Create(questionnaire).Error; err != nil {
+	if err = dao.SqlSession.Create(&questionnaire).Error; err != nil {
 		return err
 	}
 	return

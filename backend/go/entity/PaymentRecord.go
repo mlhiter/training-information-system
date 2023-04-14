@@ -10,7 +10,9 @@ func (PaymentRecord) TableName() string {
 type PaymentRecord struct {
 	gorm.Model
 	CourseId      uint    `json:"courseId"`
+	CourseName    string  `json:"courseName"`
 	StudentId     uint    `json:"studentId"`
+	StudentName   string  `json:"studentName"`
 	PaymentAmount float64 `json:"paymentAmount"`
 	PaymentTime   string  `json:"paymentTime"`
 	Payee         string  `json:"payee"`

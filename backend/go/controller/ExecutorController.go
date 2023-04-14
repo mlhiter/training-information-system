@@ -41,7 +41,7 @@ func GetExecutorList(c *gin.Context) {
 func DeleteExecutor(c *gin.Context) {
 	var executor entity.Executor
 	c.BindJSON(&executor)
-	err := service.DeleteStudentById(executor.ID)
+	err := service.DeleteExecutorById(executor.ID)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	} else {

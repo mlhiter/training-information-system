@@ -51,9 +51,11 @@ func UpdateStudent(student *entity.Student) (err error) {
 	return
 }
 
-func GetStudentByStudentName(studentName string) (student *entity.Student, err error) {
-	if err = dao.SqlSession.Where("name=?", studentName).First(student).Error; err != nil {
+func GetStudentByStudentName(studentName string) (returnStudent *entity.Student, err error) {
+	var student entity.Student
+	if err = dao.SqlSession.Where("name=?", studentName).First(&student).Error; err != nil {
 		return nil, err
 	}
+	returnStudent = &student
 	return
 }

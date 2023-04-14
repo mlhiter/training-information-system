@@ -19,7 +19,7 @@ func CreatePaymentRecord(paymentRecord *entity.PaymentRecord) (err error) {
 获取学生集合
 */
 func GetAllPaymentRecordByStudentId(id uint) (paymentRecordList []*entity.PaymentRecord, err error) {
-	if err = dao.SqlSession.Where("id=?", id).Find(&paymentRecordList).Error; err != nil {
+	if err = dao.SqlSession.Where("student_id=?", id).Find(&paymentRecordList).Error; err != nil {
 		return nil, err
 	}
 	return

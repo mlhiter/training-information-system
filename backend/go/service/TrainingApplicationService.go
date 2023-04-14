@@ -47,6 +47,6 @@ func GetTrainingApplicationById(id uint) (trainingApplication *entity.TrainingAp
 更新学生信息
 */
 func UpdateTrainingApplication(trainingApplication *entity.TrainingApplication) (err error) {
-	err = dao.SqlSession.Save(trainingApplication).Error
+	err = dao.SqlSession.Model(trainingApplication).Update("status", trainingApplication.Status).Error
 	return
 }

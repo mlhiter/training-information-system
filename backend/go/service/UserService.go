@@ -34,19 +34,21 @@ func DeleteUserById(id string) (err error) {
 }
 
 /*
-根据id查询用户User
+根据userName查询用户User
 */
-func GetUserByUserName(userName string) (user *entity.User, err error) {
-	if err = dao.SqlSession.Where("user_name=?", userName).First(user).Error; err != nil {
+func GetUserByUserName(userName string) (returnUser *entity.User, err error) {
+	var user entity.User
+	if err = dao.SqlSession.Table("user").Where("user_name=?", userName).First(&user).Error; err != nil {
 		return nil, err
 	}
+	returnUser = &user
 	return
 }
 
 /*
-根据userName查询用户User
+根据id查询用户User
 */
-func GetUserById(id string) (user *entity.User, err error) {
+func GetUserById(id uint) (user *entity.User, err error) {
 	if err = dao.SqlSession.Where("id=?", id).First(user).Error; err != nil {
 		return nil, err
 	}

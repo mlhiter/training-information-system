@@ -10,13 +10,11 @@ func (Course) TableName() string {
 type Course struct {
 	gorm.Model
 	Name             string  `json:"name"`
-	ClassTime        string  `json:"classTime"`
-	PlaceOfClass     string  `json:"placeOfClass"`
+	Time             string  `json:"time"`
+	Place            string  `json:"place"`
 	Price            float64 `json:"price"`
-	SelectedNumber   uint
-	Income			 float64
+	SelectedNumber   uint    `json:"selectedNumber"`
+	Income			 float64 `json:"income"`
 	LecturerId       uint    `json:"lecturerId"`
-	ExecutorId       uint    `json:"executorId"`
-	EmailContentId   uint    `json:"EmailContentId"`
-	TrainingNoticeId uint    `json:"TrainingNoticeId"`
+	Lecturer         string  `json:"lecturer"`
 }

@@ -57,7 +57,7 @@ func GetCourseList(c *gin.Context) {
 func DeleteCourse(c *gin.Context) {
 	var course entity.Course
 	c.BindJSON(&course)
-	err := service.DeleteStudentById(course.ID)
+	err := service.DeleteCourseById(course.ID)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 	} else {
