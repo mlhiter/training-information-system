@@ -3,7 +3,6 @@ package controller
 import (
 	//需要用到的结构体
 	"backend/go/entity"
-	"backend/go/request"
 	//gin框架的依赖
 	"github.com/gin-gonic/gin"
 	//http连接包
@@ -40,9 +39,10 @@ func GetPaymentRecordList(c *gin.Context) {
 }
 
 func GetPaymentRecordListByStudentName(c *gin.Context) {
-	var getPaymentRecordRequest request.GetPaymentRecordRequest
-	c.BindJSON(&getPaymentRecordRequest)
-	student , _ := service.GetStudentByStudentName(getPaymentRecordRequest.StudentName)
+	// var getPaymentRecordRequest request.GetPaymentRecordRequest
+	// c.BindJSON(&getPaymentRecordRequest)
+	StudentName := c.Query("studentName")
+	student , _ := service.GetStudentByStudentName(StudentName)
 	paymentRecordList, err := service.GetAllPaymentRecordByStudentId(student.ID)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
