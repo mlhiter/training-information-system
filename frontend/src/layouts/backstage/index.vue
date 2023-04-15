@@ -10,7 +10,7 @@
       </n-layout-header>
       <n-layout has-sider class="h-4/5">
         <n-layout-sider bordered content-style="padding: 24px;">
-          <n-menu :options="menuOptions" v-model:value="activeMenukey" default-value="index" />
+          <n-menu :options="menuOptions" default-value="index" />
         </n-layout-sider>
         <n-layout-content
           content-style="padding: 24px;"
@@ -39,7 +39,7 @@ import User from '../components/user.vue'
 const role = getRole()
 const router = useRouter()
 // const route = useRoute()
-const activeMenukey = ref('')
+// const activeMenukey = ref('')
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }

@@ -14,7 +14,7 @@ const message = useMessage()
 const pagination = {
   pageSize: 10,
 }
-const selectOptions = [
+const selectOptions = () => [
   { label: '通过', key: 'passed' },
   { label: '拒绝', key: 'rejected' },
 ]
@@ -51,7 +51,7 @@ const columns: DataTableColumns = [
         NDropdown,
         {
           trigger: 'click',
-          options: selectOptions,
+          options: selectOptions(),
           onSelect: (key: string) => changeStatus(row.ID, key),
         },
         [
