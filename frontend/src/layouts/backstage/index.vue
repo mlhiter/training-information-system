@@ -38,77 +38,15 @@ function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
 let menuOptions: MenuOption[] = []
-const executorMenuOptions: MenuOption[] = [
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: { path: '/backstage/executor/enroll' },
-        },
-        { default: () => '个人报名审核' }
-      ),
-    key: 'index',
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: { path: '/backstage/executor/lecturer' },
-        },
-        { default: () => '讲师管理' }
-      ),
-    key: 'lecturer',
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: { path: '/backstage/executor/questionnaire' },
-        },
-        { default: () => '问卷管理' }
-      ),
-    key: 'questionnaire',
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: { path: '/backstage/executor/student' },
-        },
-        { default: () => '学员管理' }
-      ),
-    key: 'student',
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: { path: '/backstage/executor/training' },
-        },
-        { default: () => '课程管理' }
-      ),
-    key: 'training',
-    icon: renderIcon(BookIcon),
-  },
-]
-// const managerMenuOptions: MenuOption[] = [
+// const executorMenuOptions: MenuOption[] = [
 //   {
 //     label: () =>
 //       h(
 //         RouterLink,
 //         {
-//           to: { path: '/backstage/manager/enroll' },
+//           to: { path: '/backstage/executor/enroll' },
 //         },
-//         { default: () => '培训审核' }
+//         { default: () => '个人报名审核' }
 //       ),
 //     key: 'index',
 //     icon: renderIcon(BookIcon),
@@ -118,11 +56,11 @@ const executorMenuOptions: MenuOption[] = [
 //       h(
 //         RouterLink,
 //         {
-//           to: { path: '/backstage/manager/report' },
+//           to: { path: '/backstage/executor/lecturer' },
 //         },
-//         { default: () => '汇总报表' }
+//         { default: () => '讲师管理' }
 //       ),
-//     key: 'report',
+//     key: 'lecturer',
 //     icon: renderIcon(BookIcon),
 //   },
 //   {
@@ -130,14 +68,76 @@ const executorMenuOptions: MenuOption[] = [
 //       h(
 //         RouterLink,
 //         {
-//           to: { path: '/backstage/manager/executor' },
+//           to: { path: '/backstage/executor/questionnaire' },
 //         },
-//         { default: () => '执行人管理' }
+//         { default: () => '问卷管理' }
 //       ),
-//     key: 'executor',
+//     key: 'questionnaire',
+//     icon: renderIcon(BookIcon),
+//   },
+//   {
+//     label: () =>
+//       h(
+//         RouterLink,
+//         {
+//           to: { path: '/backstage/executor/student' },
+//         },
+//         { default: () => '学员管理' }
+//       ),
+//     key: 'student',
+//     icon: renderIcon(BookIcon),
+//   },
+//   {
+//     label: () =>
+//       h(
+//         RouterLink,
+//         {
+//           to: { path: '/backstage/executor/training' },
+//         },
+//         { default: () => '课程管理' }
+//       ),
+//     key: 'training',
 //     icon: renderIcon(BookIcon),
 //   },
 // ]
+const managerMenuOptions: MenuOption[] = [
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/backstage/manager/enroll' },
+        },
+        { default: () => '培训审核' }
+      ),
+    key: 'index',
+    icon: renderIcon(BookIcon),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/backstage/manager/report' },
+        },
+        { default: () => '汇总报表' }
+      ),
+    key: 'report',
+    icon: renderIcon(BookIcon),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/backstage/manager/executor' },
+        },
+        { default: () => '执行人管理' }
+      ),
+    key: 'executor',
+    icon: renderIcon(BookIcon),
+  },
+]
 // const operatorMenuOptions: MenuOption[] = [
 //   {
 //     label: () =>
@@ -155,10 +155,10 @@ const executorMenuOptions: MenuOption[] = [
 //FIXME:类型过深的问题修复
 onBeforeMount(() => {
   switch (role) {
-    case 'executor':
-      menuOptions = executorMenuOptions
-    // case 'manager':
-    //   menuOptions = managerMenuOptions
+    // case 'executor':
+    //   menuOptions = executorMenuOptions
+    case 'manager':
+      menuOptions = managerMenuOptions
     // case 'operator':
     //   menuOptions = operatorMenuOptions
     default:

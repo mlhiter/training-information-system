@@ -73,7 +73,7 @@ const columns: DataTableColumns = [
               strong: true,
               size: 'small',
               secondary: true,
-              type: 'success',
+              type: 'info',
             },
             { default: () => '更改审核状态' }
           ),
