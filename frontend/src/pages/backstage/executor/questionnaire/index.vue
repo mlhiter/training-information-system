@@ -43,7 +43,7 @@
         <n-form-item label="满意度" path="satisfaction">
           <n-input-number
             v-model:value="formValue.satisfaction"
-            placeholder="请输入满意度" />
+            placeholder="请输入满意度（0-5）" />
         </n-form-item>
         <n-form-item label="评价" path="comment">
           <n-input v-model:value="formValue.comment" placeholder="请输入评价" />

@@ -33,7 +33,7 @@ import { MenuOption, NIcon } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { BookOutline as BookIcon } from '@vicons/ionicons5'
 import User from '../components/user.vue'
-import { useRoute } from 'vue-router'
+// import { useRoute } from 'vue-router'
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
@@ -88,15 +88,15 @@ const menuOptions: MenuOption[] = [
   },
 ]
 //FIXME: 路由刷新后菜单项的活跃路由问题
-const route = useRoute()
+// const route = useRoute()
 const activeMenuRef = ref('enroll')
-onMounted(() => {
-  const activeMenu = menuOptions.find(
-    (option: MenuOption) => route.path === option.label().props.to.path
-  )
-  // 设置 activeMenu 值
-  activeMenuRef.value = activeMenu?.key as string
-})
+// onMounted(() => {
+//   const activeMenu = menuOptions.find(
+//     (option: MenuOption) => route.path === option.label().props.to.path
+//   )
+//   // 设置 activeMenu 值
+//   activeMenuRef.value = activeMenu?.key as string
+// })
 </script>
 
 <style lang="sass" scoped></style>

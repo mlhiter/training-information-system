@@ -33,12 +33,12 @@ import { MenuOption, NIcon } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { BookOutline as BookIcon } from '@vicons/ionicons5'
 import { getRole } from '@/utils/token'
-import { useRouter, useRoute } from 'vue-router'
+import { useRouter } from 'vue-router'
 import User from '../components/user.vue'
 
 const role = getRole()
 const router = useRouter()
-const route = useRoute()
+// const route = useRoute()
 const activeMenukey = ref('')
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
@@ -177,13 +177,13 @@ onBeforeMount(() => {
       break
   }
 })
-onMounted(() => {
-   menuOptions.forEach((menuOption) => {
-    if (menuOption.label().props.to.path == route.path) {
-      activeMenukey.value = menuOption.key as string
-    }
-  })
-})
+// onMounted(() => {
+//    menuOptions.forEach((menuOption) => {
+//     if (menuOption.label().props.to.path == route.path) {
+//       activeMenukey.value = menuOption.key as string
+//     }
+//   })
+// })
 </script>
 
 <style lang="sass" scoped></style>

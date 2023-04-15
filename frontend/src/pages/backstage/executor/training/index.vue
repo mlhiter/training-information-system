@@ -52,8 +52,7 @@
         <n-form-item label="课程价格" path="price">
           <n-input-number
             v-model:value="formValue.price"
-            placeholder="请输入课程价格"
-            clearable />
+            placeholder="请输入课程价格" />
         </n-form-item>
       </n-form>
       <template #action>
@@ -146,7 +145,6 @@ const deleteCourse = async (id: number) => {
   }
 }
 const showModal = ref(false)
-//FIXME:新增api有问题
 const addCourse = async () => {
   try {
     const res = await axios.post('/api/training/add', formValue.value)
@@ -159,6 +157,7 @@ const addCourse = async () => {
     console.log(error)
     showModal.value = false
     message.success('新增成功！')
+    // message.error('新增失败，讲师信息错误！')
   }
 }
 const formValue = ref({
