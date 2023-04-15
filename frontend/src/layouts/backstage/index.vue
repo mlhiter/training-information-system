@@ -6,6 +6,7 @@
       <n-layout-header bordered class="h-60px flex items-center">
         <n-image src="/favicon.svg" class="w-150px"></n-image>
         <div class="text-3xl font-mono">浩奇培训信息管理系统——后台</div>
+        <div class="ml-540px"><User /></div>
       </n-layout-header>
       <n-layout has-sider class="h-4/5">
         <n-layout-sider bordered content-style="padding: 24px;">
@@ -33,6 +34,8 @@ import { RouterLink } from 'vue-router'
 import { BookOutline as BookIcon } from '@vicons/ionicons5'
 import { getRole } from '@/utils/token'
 import { useRouter } from 'vue-router'
+import User from '../components/user.vue'
+
 const role = getRole()
 const router = useRouter()
 function renderIcon(icon: Component) {

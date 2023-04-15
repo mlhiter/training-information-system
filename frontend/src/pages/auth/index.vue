@@ -59,7 +59,7 @@
 </template>
 
 <script lang="ts" setup>
-import { setRole } from '@/utils/token'
+import { setRole, setUser } from '@/utils/token'
 import { useMessage } from 'naive-ui'
 import { useRouter } from 'vue-router'
 const router = useRouter()
@@ -96,6 +96,7 @@ const login = async () => {
     })
     if (res.data.msg === '登录成功') {
       setRole(role.value)
+      setUser(username.value)
       if (role.value === 'user') {
         router.push('/frontstage')
       } else {

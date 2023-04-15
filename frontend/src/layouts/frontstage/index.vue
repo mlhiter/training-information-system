@@ -6,6 +6,7 @@
       <n-layout-header bordered class="h-60px flex items-center">
         <n-image src="/favicon.svg" class="w-150px"></n-image>
         <div class="text-3xl font-mono">浩奇培训信息管理系统——前台</div>
+        <div class="ml-540px"><User /></div>
       </n-layout-header>
       <n-layout has-sider class="h-4/5">
         <n-layout-sider bordered content-style="padding: 24px;">
@@ -31,7 +32,7 @@
 import { MenuOption, NIcon } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { BookOutline as BookIcon } from '@vicons/ionicons5'
-
+import User from '../components/user.vue'
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
