@@ -1,6 +1,9 @@
 <template>
   <div>
-    <n-card title="请选择你想要报名的种类：" style="margin-bottom: 16px">
+    <n-card
+      title="请选择你想要报名的种类："
+      style="margin-bottom: 16px"
+      v-if="change">
       <n-tabs type="line" animated>
         <n-tab-pane name="individual" tab="个人">
           <n-form ref="formRef" :label-width="80" :model="individualFormValue">
@@ -87,10 +90,9 @@
 </template>
 
 <script lang="ts" setup>
-import { useMessage } from 'naive-ui'
 import { useRouter } from 'vue-router'
+const change = ref(true)
 const router = useRouter()
-const message = useMessage()
 const individualFormValue = ref({
   courseName: '',
   name: '',
@@ -115,7 +117,7 @@ const handleEnrollIndividual = async () => {
       individualFormValue.value
     )
     if (res.data.msg == 'success') {
-      message.success('提交成功!')
+      change.value = false
       router.push('/frontstage/pay')
     }
   } catch (error) {
@@ -129,13 +131,16 @@ const handleEnrollOrganization = async () => {
       organizationFormValue.value
     )
     if (res.data.msg == 'success') {
-      message.success('提交成功!')
+      change.value = false
       router.push('/frontstage/pay')
     }
   } catch (error) {
     console.log(error)
   }
 }
+onDeactivated(() => {
+  change.value = true
+})
 </script>
 
 <style lang="sass" scoped></style>

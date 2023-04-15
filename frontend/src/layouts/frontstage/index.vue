@@ -11,7 +11,9 @@
         <n-layout-sider bordered content-style="padding: 24px;">
           <n-menu :options="menuOptions" default-value="enroll" />
         </n-layout-sider>
-        <n-layout-content content-style="padding: 24px;" :native-scrollbar="false">
+        <n-layout-content
+          content-style="padding: 24px;"
+          :native-scrollbar="false">
           <router-view v-slot="{ Component }">
             <transition :duration="200" name="fade-top" mode="out-in">
               <keep-alive>

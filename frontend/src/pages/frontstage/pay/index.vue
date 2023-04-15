@@ -1,5 +1,5 @@
 <template>
-  <n-card title="缴费账单">
+  <n-card title="缴费账单" v-if="change">
     <template #header-extra>{{ check.paymentTime }}</template>
     账单id:{{ check.ID }}
     <br />
@@ -23,11 +23,11 @@
       </n-button>
     </template>
   </n-card>
+  <n-alert title="Success" type="success" v-else>缴费成功！</n-alert>
 </template>
 
 <script lang="ts" setup>
-import { useMessage } from 'naive-ui'
-const message = useMessage()
+const change = ref(true)
 const check = ref({
   ID: 1,
   studentId: 1,
@@ -53,10 +53,13 @@ const fetchCheckList = async () => {
   }
 }
 function handlePayment() {
-  message.success('缴费成功!')
+  change.value = false
 }
 onActivated(async () => {
   fetchCheckList()
+})
+onDeactivated(() => {
+  change.value = true
 })
 </script>
 
