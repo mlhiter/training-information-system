@@ -43,7 +43,7 @@ const studentName = '李致知'
 const fetchCheckList = async () => {
   try {
     const res = await axios.get('/api/pay/individual', {
-      data: { studentName: studentName },
+      params: { studentName: studentName },
     })
     let tempCheck = res.data.data[0]
     check.value = { ...check.value, ...tempCheck }

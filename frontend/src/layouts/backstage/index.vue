@@ -32,74 +32,75 @@ import { MenuOption, NIcon } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { BookOutline as BookIcon } from '@vicons/ionicons5'
 import { getRole } from '@/utils/token'
+import { useRouter } from 'vue-router'
 const role = getRole()
-
+const router = useRouter()
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
 let menuOptions: MenuOption[] = []
-// const executorMenuOptions: MenuOption[] = [
-//   {
-//     label: () =>
-//       h(
-//         RouterLink,
-//         {
-//           to: { path: '/backstage/executor/enroll' },
-//         },
-//         { default: () => '个人报名审核' }
-//       ),
-//     key: 'index',
-//     icon: renderIcon(BookIcon),
-//   },
-//   {
-//     label: () =>
-//       h(
-//         RouterLink,
-//         {
-//           to: { path: '/backstage/executor/lecturer' },
-//         },
-//         { default: () => '讲师管理' }
-//       ),
-//     key: 'lecturer',
-//     icon: renderIcon(BookIcon),
-//   },
-//   {
-//     label: () =>
-//       h(
-//         RouterLink,
-//         {
-//           to: { path: '/backstage/executor/questionnaire' },
-//         },
-//         { default: () => '问卷管理' }
-//       ),
-//     key: 'questionnaire',
-//     icon: renderIcon(BookIcon),
-//   },
-//   {
-//     label: () =>
-//       h(
-//         RouterLink,
-//         {
-//           to: { path: '/backstage/executor/student' },
-//         },
-//         { default: () => '学员管理' }
-//       ),
-//     key: 'student',
-//     icon: renderIcon(BookIcon),
-//   },
-//   {
-//     label: () =>
-//       h(
-//         RouterLink,
-//         {
-//           to: { path: '/backstage/executor/training' },
-//         },
-//         { default: () => '课程管理' }
-//       ),
-//     key: 'training',
-//     icon: renderIcon(BookIcon),
-//   },
-// ]
+const executorMenuOptions: MenuOption[] = [
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/backstage/executor/enroll' },
+        },
+        { default: () => '个人报名审核' }
+      ),
+    key: 'index',
+    icon: renderIcon(BookIcon),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/backstage/executor/lecturer' },
+        },
+        { default: () => '讲师管理' }
+      ),
+    key: 'lecturer',
+    icon: renderIcon(BookIcon),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/backstage/executor/questionnaire' },
+        },
+        { default: () => '问卷管理' }
+      ),
+    key: 'questionnaire',
+    icon: renderIcon(BookIcon),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/backstage/executor/student' },
+        },
+        { default: () => '学员管理' }
+      ),
+    key: 'student',
+    icon: renderIcon(BookIcon),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/backstage/executor/training' },
+        },
+        { default: () => '课程管理' }
+      ),
+    key: 'training',
+    icon: renderIcon(BookIcon),
+  },
+]
 const managerMenuOptions: MenuOption[] = [
   {
     label: () =>
@@ -138,29 +139,35 @@ const managerMenuOptions: MenuOption[] = [
     icon: renderIcon(BookIcon),
   },
 ]
-// const operatorMenuOptions: MenuOption[] = [
-//   {
-//     label: () =>
-//       h(
-//         RouterLink,
-//         {
-//           to: { path: '/backstage/operator' },
-//         },
-//         { default: () => '学生名单' }
-//       ),
-//     key: 'index',
-//     icon: renderIcon(BookIcon),
-//   },
-// ]
-//FIXME:类型过深的问题修复
+const operatorMenuOptions: MenuOption[] = [
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/backstage/operator' },
+        },
+        { default: () => '学生名单' }
+      ),
+    key: 'index',
+    icon: renderIcon(BookIcon),
+  },
+]
 onBeforeMount(() => {
+  console.log(role)
   switch (role) {
-    // case 'executor':
-    //   menuOptions = executorMenuOptions
+    case 'executor':
+      menuOptions = executorMenuOptions
+      router.push('/backstage/executor/enroll')
+      break
     case 'manager':
       menuOptions = managerMenuOptions
-    // case 'operator':
-    //   menuOptions = operatorMenuOptions
+      router.push('/backstage/manager/enroll')
+      break
+    case 'operator':
+      menuOptions = operatorMenuOptions
+      router.push('/backstage/operator')
+      break
     default:
       break
   }
