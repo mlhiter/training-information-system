@@ -14,8 +14,8 @@ export const setRole = (value: string) => {
   localStorage.setItem('role', value)
 }
 //获取角色
-export const getRole = (value: string) => {
-  localStorage.getItem('role')
+export const getRole = () => {
+  return localStorage.getItem('role')
 }
 // 清除登录信息
 // export const clearToken = () => {

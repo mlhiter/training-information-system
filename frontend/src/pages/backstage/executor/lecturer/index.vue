@@ -1,8 +1,9 @@
 <template>
+  <div>我是讲师管理</div>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import {} from 'vue'
 </script>
 
-<style lang='sass' scoped></style>
+<style lang="sass" scoped></style>
