@@ -45,7 +45,7 @@ const fetchCheckList = async () => {
     const res = await axios.get('/api/pay/individual', {
       params: { studentName: studentName },
     })
-    let tempCheck = res.data.data[0]
+    let tempCheck = res.data.data[res.data.data.length - 1]
     check.value = { ...check.value, ...tempCheck }
     console.log(check.value)
   } catch (error) {

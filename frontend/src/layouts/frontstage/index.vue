@@ -10,7 +10,7 @@
       </n-layout-header>
       <n-layout has-sider class="h-4/5">
         <n-layout-sider bordered content-style="padding: 24px;">
-          <n-menu :options="menuOptions" default-value="enroll" />
+          <n-menu :options="menuOptions" v-model:value="activeMenuRef" />
         </n-layout-sider>
         <n-layout-content
           content-style="padding: 24px;"
@@ -33,6 +33,7 @@ import { MenuOption, NIcon } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { BookOutline as BookIcon } from '@vicons/ionicons5'
 import User from '../components/user.vue'
+import { useRoute } from 'vue-router'
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
@@ -86,6 +87,16 @@ const menuOptions: MenuOption[] = [
     icon: renderIcon(BookIcon),
   },
 ]
+//FIXME: 路由刷新后菜单项的活跃路由问题
+const route = useRoute()
+const activeMenuRef = ref('enroll')
+onMounted(() => {
+  const activeMenu = menuOptions.find(
+    (option: MenuOption) => route.path === option.label().props.to.path
+  )
+  // 设置 activeMenu 值
+  activeMenuRef.value = activeMenu?.key as string
+})
 </script>
 
 <style lang="sass" scoped></style>

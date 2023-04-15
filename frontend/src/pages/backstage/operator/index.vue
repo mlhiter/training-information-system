@@ -57,8 +57,16 @@ const columns: DataTableColumns = [
     render(row) {
       return h('div', [
         row.isPaid === '已缴费'
-          ? h(NTag, { type: 'success', bordered: false }, '已缴费')
-          : h(NTag, { type: 'error', bordered: false }, '未缴费'),
+          ? h(
+              NTag,
+              { type: 'success', bordered: false },
+              { default: () => '已缴费' }
+            )
+          : h(
+              NTag,
+              { type: 'error', bordered: false },
+              { default: () => '未缴费' }
+            ),
       ])
     },
   },
@@ -68,8 +76,16 @@ const columns: DataTableColumns = [
     render(row) {
       return h('div', [
         row.isSigned === '已签到'
-          ? h(NTag, { type: 'success', bordered: false }, '已签到')
-          : h(NTag, { type: 'error', bordered: false }, '未签到'),
+          ? h(
+              NTag,
+              { type: 'success', bordered: false },
+              { default: () => '已签到' }
+            )
+          : h(
+              NTag,
+              { type: 'error', bordered: false },
+              { default: () => '未签到' }
+            ),
       ])
     },
   },

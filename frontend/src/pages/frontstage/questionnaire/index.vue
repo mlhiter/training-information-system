@@ -13,7 +13,7 @@
             placeholder="请输入课程名" />
         </n-form-item>
         <n-form-item label="满意度" path="satisfaction">
-          <n-input
+          <n-input-number
             v-model:value="formValue.satisfaction"
             placeholder="请输入满意度（0-5）" />
         </n-form-item>

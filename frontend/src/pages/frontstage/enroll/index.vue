@@ -86,13 +86,12 @@
         </n-tab-pane>
       </n-tabs>
     </n-card>
+    <n-alert title="Success" type="success" v-else>报名成功，请前往缴费页面进行缴费。</n-alert>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
 const change = ref(true)
-const router = useRouter()
 const individualFormValue = ref({
   courseName: '',
   name: '',
@@ -118,7 +117,6 @@ const handleEnrollIndividual = async () => {
     )
     if (res.data.msg == 'success') {
       change.value = false
-      router.push('/frontstage/pay')
     }
   } catch (error) {
     console.log(error)
@@ -132,7 +130,6 @@ const handleEnrollOrganization = async () => {
     )
     if (res.data.msg == 'success') {
       change.value = false
-      router.push('/frontstage/pay')
     }
   } catch (error) {
     console.log(error)

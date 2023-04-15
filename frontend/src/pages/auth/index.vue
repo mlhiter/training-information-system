@@ -104,6 +104,7 @@ const login = async () => {
       }
     }
   } catch (error) {
+    console.log(error)
     message.error('登录失败！')
   }
 }

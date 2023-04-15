@@ -9,9 +9,8 @@
 </template>
 
 <script lang="ts" setup>
-import { NIcon,useMessage } from 'naive-ui'
+import { NIcon, useMessage } from 'naive-ui'
 import { LogOutOutline as LogoutIcon } from '@vicons/ionicons5'
-import {  } from 'naive-ui'
 import router from '@/router'
 const message = useMessage()
 const renderIcon = (icon: Component) => {

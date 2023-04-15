@@ -10,7 +10,7 @@
       </n-layout-header>
       <n-layout has-sider class="h-4/5">
         <n-layout-sider bordered content-style="padding: 24px;">
-          <n-menu :options="menuOptions" default-value="index" />
+          <n-menu :options="menuOptions" v-model:value="activeMenukey" default-value="index" />
         </n-layout-sider>
         <n-layout-content
           content-style="padding: 24px;"
@@ -33,11 +33,13 @@ import { MenuOption, NIcon } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { BookOutline as BookIcon } from '@vicons/ionicons5'
 import { getRole } from '@/utils/token'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import User from '../components/user.vue'
 
 const role = getRole()
 const router = useRouter()
+const route = useRoute()
+const activeMenukey = ref('')
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
@@ -174,6 +176,13 @@ onBeforeMount(() => {
     default:
       break
   }
+})
+onMounted(() => {
+   menuOptions.forEach((menuOption) => {
+    if (menuOption.label().props.to.path == route.path) {
+      activeMenukey.value = menuOption.key as string
+    }
+  })
 })
 </script>
 
