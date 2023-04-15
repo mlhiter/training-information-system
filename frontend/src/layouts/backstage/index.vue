@@ -94,7 +94,7 @@ const executorMenuOptions: MenuOption[] = [
         {
           to: { path: '/backstage/executor/training' },
         },
-        { default: () => '培训信息管理' }
+        { default: () => '课程管理' }
       ),
     key: 'training',
     icon: renderIcon(BookIcon),
