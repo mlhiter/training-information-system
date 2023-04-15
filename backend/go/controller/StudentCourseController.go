@@ -3,7 +3,7 @@ package controller
 import (
 	//需要用到的结构体
 	"backend/go/entity"
-	"backend/go/request"
+	"fmt"
 
 	//gin框架的依赖
 	"github.com/gin-gonic/gin"
@@ -41,9 +41,11 @@ func GetStudentCourseList(c *gin.Context) {
 }
 
 func GetStudentCourseListByCourseName(c *gin.Context) {
-	var getStudentCourseRequest request.GetStudentCourseRequest
-	c.BindJSON(&getStudentCourseRequest)
-	course, _ := service.GetCourseByCourseName(getStudentCourseRequest.CourseName)
+	// var getStudentCourseRequest request.GetStudentCourseRequest
+	// c.BindJSON(&getStudentCourseRequest)
+	CourseName := c.Query("courseName")
+	fmt.Println(CourseName)
+	course, _ := service.GetCourseByCourseName(CourseName)
 	studentCourseList, err := service.GetStudentCourseListByCourseId(course.ID)
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
