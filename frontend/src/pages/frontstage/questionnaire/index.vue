@@ -47,7 +47,7 @@ const formValue = ref({
 const change = ref(true)
 const handleSubmit = async () => {
   try {
-    const res = await axios.post('/api/questionnaire', formValue.value)
+    const res = await axios.post('/backend/questionnaire', formValue.value)
     if (res.data.msg == 'success') {
       change.value = false
     }

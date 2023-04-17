@@ -95,7 +95,7 @@ const columns: DataTableColumns = [
 const renderData = ref([])
 const fetchRenderData = async () => {
   try {
-    const res = await axios.get('/api/executor/list')
+    const res = await axios.get('/backend/executor/list')
     renderData.value = res.data.data
   } catch (error) {
     console.log(error)
@@ -106,7 +106,7 @@ fetchRenderData()
 const deleteExecutor = async (id: number) => {
   try {
     const res = await axios.request({
-      url: '/api/executor/delete',
+      url: '/backend/executor/delete',
       method: 'delete',
       data: {
         id,
@@ -123,7 +123,7 @@ const deleteExecutor = async (id: number) => {
 const showModal = ref(false)
 const addExecutor = async () => {
   try {
-    const res = await axios.post('/api/executor/add', formValue.value)
+    const res = await axios.post('/backend/executor/add', formValue.value)
     if (res.data.msg === 'success') {
       showModal.value = false
       message.success('新增成功！')

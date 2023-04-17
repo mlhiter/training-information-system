@@ -73,7 +73,7 @@ const columns: DataTableColumns = [
 const renderData = ref([])
 const fetchRenderData = async () => {
   try {
-    const res = await axios.get('/api/enroll/organisation/list')
+    const res = await axios.get('/backend/enroll/organisation/list')
     renderData.value = res.data.data
   } catch (error) {
     console.log(error)
@@ -83,7 +83,7 @@ fetchRenderData()
 
 const changeStatus = async (id: number, status: string) => {
   try {
-    const res = await axios.put('/api/enroll/organisation/review', {
+    const res = await axios.put('/backend/enroll/organisation/review', {
       id: id,
       status: status,
     })

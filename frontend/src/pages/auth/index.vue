@@ -89,7 +89,7 @@ const password = ref<string>('')
 
 const login = async () => {
   try {
-    const res = await axios.post('/api/login', {
+    const res = await axios.post('/backend/login', {
       username: username.value,
       password: password.value,
       role: role.value,

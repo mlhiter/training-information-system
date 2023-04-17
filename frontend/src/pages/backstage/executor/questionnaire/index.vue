@@ -113,7 +113,7 @@ const columns: DataTableColumns = [
 const renderData = ref([])
 const fetchRenderData = async () => {
   try {
-    const res = await axios.get('/api/questionnaire/list')
+    const res = await axios.get('/backend/questionnaire/list')
     renderData.value = res.data.data
   } catch (error) {
     console.log(error)
@@ -124,7 +124,7 @@ fetchRenderData()
 const deleteQuestionnaire = async (id: number) => {
   try {
     const res = await axios.request({
-      url: '/api/questionnaire/delete',
+      url: '/backend/questionnaire/delete',
       method: 'delete',
       data: {
         id,
@@ -141,7 +141,7 @@ const deleteQuestionnaire = async (id: number) => {
 const showModal = ref(false)
 const addQuestionnaire = async () => {
   try {
-    const res = await axios.post('/api/questionnaire/add', formValue.value)
+    const res = await axios.post('/backend/questionnaire/add', formValue.value)
     if (res.data.msg === 'success') {
       showModal.value = false
       message.success('新增成功！')

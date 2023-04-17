@@ -190,7 +190,7 @@ const questionnaireColumns: DataTableColumns = [
 ]
 const fetchIncomeData = async () => {
   try {
-    const res = await axios.get('/api/income/list')
+    const res = await axios.get('/backend/income/list')
     incomeData.value = res.data.data
   } catch (error) {
     console.log(error)
@@ -198,7 +198,7 @@ const fetchIncomeData = async () => {
 }
 const fetchCourseData = async () => {
   try {
-    const res = await axios.get('/api/training/list')
+    const res = await axios.get('/backend/training/list')
     courseData.value = res.data.data
   } catch (error) {
     console.log(error)
@@ -206,7 +206,7 @@ const fetchCourseData = async () => {
 }
 const fetchStudentData = async () => {
   try {
-    const res = await axios.get('/api/student/list')
+    const res = await axios.get('/backend/student/list')
     studentData.value = res.data.data
   } catch (error) {
     console.log(error)
@@ -214,7 +214,7 @@ const fetchStudentData = async () => {
 }
 const fetchLecturerData = async () => {
   try {
-    const res = await axios.get('/api/lecturer/list')
+    const res = await axios.get('/backend/lecturer/list')
     lecturerData.value = res.data.data
   } catch (error) {
     console.log(error)
@@ -222,7 +222,7 @@ const fetchLecturerData = async () => {
 }
 const fetchQuestionnaireData = async () => {
   try {
-    const res = await axios.get('/api/questionnaire/list')
+    const res = await axios.get('/backend/questionnaire/list')
     questionnaireData.value = res.data.data
   } catch (error) {
     console.log(error)

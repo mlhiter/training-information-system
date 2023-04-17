@@ -42,7 +42,7 @@ const check = ref({
 const studentName = '李致知'
 const fetchCheckList = async () => {
   try {
-    const res = await axios.get('/api/pay/individual', {
+    const res = await axios.get('/backend/pay/individual', {
       params: { studentName: studentName },
     })
     let tempCheck = res.data.data[res.data.data.length - 1]

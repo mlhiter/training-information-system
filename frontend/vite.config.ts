@@ -14,9 +14,10 @@ export default defineConfig({
     open: true, //自动在浏览器启动应用
     host: true,
     proxy: {
-      '/api': {
-        target: 'http://101.43.177.191:8081',
+      '/backend': {
+        target: 'http://101.43.177.191:8081/api',
         changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/backend/, ''),
       },
     },
   },

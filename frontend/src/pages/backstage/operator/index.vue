@@ -97,7 +97,9 @@ const renderData = ref([])
 const fetchRenderData = async () => {
   try {
     showCard.value = false
-    const res = await axios.get('/api/scene/list', { params: formValue.value })
+    const res = await axios.get('/backend/scene/list', {
+      params: formValue.value,
+    })
     renderData.value = res.data.data.map((item: any) => {
       const isPaid = Math.random() >= 0.5 ? '已缴费' : '未缴费'
       const isSigned = Math.random() >= 0.5 ? '已签到' : '未签到'

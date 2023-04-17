@@ -86,7 +86,9 @@
         </n-tab-pane>
       </n-tabs>
     </n-card>
-    <n-alert title="Success" type="success" v-else>报名成功，请前往缴费页面进行缴费。</n-alert>
+    <n-alert title="Success" type="success" v-else>
+      报名成功，请前往缴费页面进行缴费。
+    </n-alert>
   </div>
 </template>
 
@@ -112,7 +114,7 @@ const organizationFormValue = ref({
 const handleEnrollIndividual = async () => {
   try {
     const res = await axios.post(
-      '/api/enroll/individual',
+      '/backend/enroll/individual',
       individualFormValue.value
     )
     if (res.data.msg == 'success') {
@@ -125,7 +127,7 @@ const handleEnrollIndividual = async () => {
 const handleEnrollOrganization = async () => {
   try {
     const res = await axios.post(
-      '/api/enroll/organisation',
+      '/backend/enroll/organisation',
       organizationFormValue.value
     )
     if (res.data.msg == 'success') {
