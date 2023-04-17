@@ -9,18 +9,23 @@
       </n-space>
       <n-tabs
         class="pl-4px"
-        default-value="signin"
+        default-value="login"
         size="large"
         animated
+        v-model:value="activeTab"
         style="margin: 0 -4px"
         pane-style="padding-left: 4px; padding-right: 4px; box-sizing: border-box;">
-        <n-tab-pane name="signin" tab="登录">
+        <n-tab-pane name="login" tab="登录">
           <n-form>
             <n-form-item-row label="用户名">
               <n-input placeholder="请输入用户名" v-model:value="username" />
             </n-form-item-row>
             <n-form-item-row label="密码">
-              <n-input placeholder="请输入密码" v-model:value="password" />
+              <n-input
+                type="password"
+                show-password-on="click"
+                placeholder="请输入密码"
+                v-model:value="password" />
             </n-form-item-row>
             <n-form-item-row label="角色">
               <n-radio-group v-model:value="role" name="radiogroup">
@@ -42,16 +47,40 @@
         <n-tab-pane name="signup" tab="注册">
           <n-form>
             <n-form-item-row label="用户名">
-              <n-input placeholder="请输入用户名" />
+              <n-input
+                placeholder="请输入用户名"
+                v-model:value="signupUsername" />
             </n-form-item-row>
             <n-form-item-row label="密码">
-              <n-input placeholder="请输入密码" />
+              <n-input
+                type="password"
+                show-password-on="click"
+                placeholder="请输入密码"
+                v-model:value="signupPassword" />
             </n-form-item-row>
             <n-form-item-row label="重复密码">
-              <n-input placeholder="请再次输入密码" />
+              <n-input
+                type="password"
+                show-password-on="click"
+                placeholder="请再次输入密码"
+                v-model:value="confirmSignupPassword" />
+            </n-form-item-row>
+            <n-form-item-row label="角色">
+              <n-radio-group v-model:value="signupRole" name="radiogroup">
+                <n-space>
+                  <n-radio
+                    v-for="role in roles"
+                    :key="role.value"
+                    :value="role.value">
+                    {{ role.label }}
+                  </n-radio>
+                </n-space>
+              </n-radio-group>
             </n-form-item-row>
           </n-form>
-          <n-button type="primary" block secondary strong>注册</n-button>
+          <n-button type="primary" block secondary strong @click="signup">
+            注册
+          </n-button>
         </n-tab-pane>
       </n-tabs>
     </n-card>
@@ -83,10 +112,15 @@ const roles = [
     value: 'operator',
   },
 ]
+
 const role = ref<string>('')
 const username = ref<string>('')
 const password = ref<string>('')
-
+const signupUsername = ref<string>('')
+const signupPassword = ref<string>('')
+const signupRole = ref<string>('')
+const activeTab = ref<string>('login')
+const confirmSignupPassword = ref<string>('')
 const login = async () => {
   try {
     const res = await axios.post('/backend/login', {
@@ -102,6 +136,26 @@ const login = async () => {
       } else {
         router.push('/backstage')
       }
+    }
+  } catch (error) {
+    console.log(error)
+    message.error('登录失败！')
+  }
+}
+const signup = async () => {
+  if (signupPassword.value != confirmSignupPassword.value) {
+    message.error('密码不一致！')
+    return
+  }
+  try {
+    const res = await axios.post('/backend/signup', {
+      username: signupUsername.value,
+      password: signupPassword.value,
+      role: role.value,
+    })
+    if (res.data.msg === 'success') {
+      message.success('注册成功。')
+      activeTab.value = 'login'
     }
   } catch (error) {
     console.log(error)
