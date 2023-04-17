@@ -1,6 +1,5 @@
 // 该服务为 vercel serve跨域处理
 import { createProxyMiddleware } from 'http-proxy-middleware'
-// import type { VercelRequest, VercelResponse } from '@vercel/node'
 
 export default function (req, res, next) {
   let target = ''
@@ -11,6 +10,7 @@ export default function (req, res, next) {
     target = 'http://101.43.177.191:8081/api'
   }
   // 创建代理对象并转发请求
+  // 安装@types/express和express提供类型支持，不然报错
   createProxyMiddleware({
     target,
     changeOrigin: true,
