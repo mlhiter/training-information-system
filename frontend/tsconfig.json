@@ -22,7 +22,8 @@
       "@/*": ["src/*"],
       "#/*": ["types/*"]
     },
-    "typeRoots": ["./node_modules/@types/", "./types/"]
+    // TODO:这里的unplugin-icons处理有点问题
+    "typeRoots": ["./node_modules/@types/", "./types/","./node_modules/unplugin-icons/types"]
   },
   "include": ["src/**/*.ts", "types/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "exclude": ["dist", "node_modules"],

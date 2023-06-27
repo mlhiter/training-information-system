@@ -41,8 +41,7 @@ APIFOX接口管理部分:https://www.apifox.cn/apidoc/shared-c7f60f96-1de2-4f96-
 
 项目github地址：https://github.com/mlhiter/training-information-system
 
-项目前端预览地址（vercel部署，需要科学上网）：https://training-information-system-3snq3hihu-mlhiter.vercel.app/
-
+项目前端预览地址（vercel部署，需要科学上网）：https://training-information-system.vercel.app/
 ## 项目启动
 
 ```sh
