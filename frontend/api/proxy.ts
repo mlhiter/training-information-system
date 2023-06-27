@@ -7,7 +7,7 @@ export default function (req, res, next) {
   // 代理目标地址
   // 这里使用 backend 主要用于区分 vercel serverless 的 api 路径
   if (req.url.startsWith('/backend')) {
-    target = 'http://101.43.177.191:8081/api'
+    target = 'http://mrc.vipgz1.91tunnel.com/api'
   }
   // 创建代理对象并转发请求
   // 安装@types/express和express提供类型支持，不然报错

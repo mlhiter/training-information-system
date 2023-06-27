@@ -166,7 +166,7 @@ const signup = async () => {
     }
   } catch (error) {
     console.log(error)
-    message.error('登录失败！')
+    message.error('注册失败！')
   }
 }
 </script>
