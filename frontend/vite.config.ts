@@ -15,7 +15,7 @@ export default defineConfig({
     host: true,
     proxy: {
       '/backend': {
-        target: 'http://101.43.177.191:8081/api',
+        target: 'http://mrc.vipgz1.91tunnel.com/api',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/backend/, ''),
       },

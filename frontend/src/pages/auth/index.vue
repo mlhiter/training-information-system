@@ -18,14 +18,18 @@
         <n-tab-pane name="login" tab="登录">
           <n-form>
             <n-form-item-row label="用户名">
-              <n-input placeholder="请输入用户名" v-model:value="username" />
+              <n-input
+                placeholder="请输入用户名"
+                v-model:value="username"
+                @keydown.enter.prevent />
             </n-form-item-row>
             <n-form-item-row label="密码">
               <n-input
                 type="password"
                 show-password-on="click"
                 placeholder="请输入密码"
-                v-model:value="password" />
+                v-model:value="password"
+                @keydown.enter.prevent />
             </n-form-item-row>
             <n-form-item-row label="角色">
               <n-radio-group v-model:value="role" name="radiogroup">
@@ -49,21 +53,24 @@
             <n-form-item-row label="用户名">
               <n-input
                 placeholder="请输入用户名"
-                v-model:value="signupUsername" />
+                v-model:value="signupUsername"
+                @keydown.enter.prevent />
             </n-form-item-row>
             <n-form-item-row label="密码">
               <n-input
                 type="password"
                 show-password-on="click"
                 placeholder="请输入密码"
-                v-model:value="signupPassword" />
+                v-model:value="signupPassword"
+                @keydown.enter.prevent />
             </n-form-item-row>
             <n-form-item-row label="重复密码">
               <n-input
                 type="password"
                 show-password-on="click"
                 placeholder="请再次输入密码"
-                v-model:value="confirmSignupPassword" />
+                v-model:value="confirmSignupPassword"
+                @keydown.enter.prevent />
             </n-form-item-row>
             <n-form-item-row label="角色">
               <n-radio-group v-model:value="signupRole" name="radiogroup">
@@ -151,7 +158,7 @@ const signup = async () => {
     const res = await axios.post('/backend/signup', {
       username: signupUsername.value,
       password: signupPassword.value,
-      role: role.value,
+      role: signupRole.value,
     })
     if (res.data.msg === 'success') {
       message.success('注册成功。')
