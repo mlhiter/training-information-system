@@ -15,33 +15,44 @@ const pagination = {
   pageSize: 10,
 }
 const selectOptions = () => [
-  { label: '通过', key: 'passed' },
-  { label: '拒绝', key: 'rejected' },
+  { label: '用户', key: 'user' },
+  { label: '执行人', key: 'executor' },
+  { label: '现场工作人员', key: 'operator' },
+  { label: '经理', key: 'manager' },
 ]
+const roleMapping = {
+  user: '用户',
+  executor: '执行人',
+  operator: '现场工作人员',
+  manager: '经理',
+} as any;
 const columns: DataTableColumns = [
   {
-    title: '报名ID',
+    title: '用户ID',
     key: 'ID',
   },
   {
-    title: '公司名',
-    key: 'applicant',
+    title: '用户名',
+    key: 'username',
   },
   {
-    title: '申请时间',
-    key: 'trainingDate',
+    title: '用户权限',
+    key: 'role',
+    render(row: any) {
+      const chineseRole = roleMapping[row.role]|| row.role; // 获取对应的中文角色，如果映射表中不存在，则保持原值
+      return h(
+        'span', // 使用一个span标签来包裹显示的文本
+        chineseRole // 中文角色
+      );
+    },
   },
   {
-    title: '申请课程',
-    key: 'trainingContext',
+    title: '创建时间',
+    key: 'CreatedAt',
   },
   {
-    title: '培训人数',
-    key: 'numOfPeople',
-  },
-  {
-    title: '审核状态',
-    key: 'status',
+    title: '更新时间',
+    key: 'UpdatedAt',
   },
   {
     title: '操作',
@@ -52,7 +63,7 @@ const columns: DataTableColumns = [
         {
           trigger: 'click',
           options: selectOptions(),
-          onSelect: (key: string) => changeStatus(row.ID, key),
+          onSelect: (key: string) => changeRole(row.username, key),
         },
         [
           h(
@@ -63,7 +74,7 @@ const columns: DataTableColumns = [
               secondary: true,
               type: 'info',
             },
-            { default: () => '更改审核状态' }
+            { default: () => '更改用户权限' }
           ),
         ]
       )
@@ -73,7 +84,7 @@ const columns: DataTableColumns = [
 const renderData = ref([])
 const fetchRenderData = async () => {
   try {
-    const res = await axios.get('/backend/enroll/organisation/list')
+    const res = await axios.get('/backend/manager/getuser')
     renderData.value = res.data.data
   } catch (error) {
     console.log(error)
@@ -81,11 +92,11 @@ const fetchRenderData = async () => {
 }
 fetchRenderData()
 
-const changeStatus = async (id: number, status: string) => {
+const changeRole = async (username: string, role: string) => {
   try {
-    const res = await axios.put('/backend/enroll/organisation/review', {
-      id: id,
-      status: status,
+    const res = await axios.post('/backend/manage/changerole', {
+      username: username,
+      role: role,
     })
     if (res.data.msg === 'success') {
       message.success('修改成功')

@@ -112,18 +112,6 @@ const managerMenuOptions: MenuOption[] = [
       h(
         RouterLink,
         {
-          to: { path: '/backstage/manager/enroll' },
-        },
-        { default: () => '培训审核' }
-      ),
-    key: 'index',
-    icon: renderIcon(BookIcon),
-  },
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
           to: { path: '/backstage/manager/report' },
         },
         { default: () => '汇总报表' }
@@ -141,6 +129,18 @@ const managerMenuOptions: MenuOption[] = [
         { default: () => '执行人管理' }
       ),
     key: 'executor',
+    icon: renderIcon(BookIcon),
+  },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/backstage/manager/user' },
+        },
+        { default: () => '用户管理' }
+      ),
+    key: 'user',
     icon: renderIcon(BookIcon),
   },
 ]

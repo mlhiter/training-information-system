@@ -31,7 +31,7 @@
                 v-model:value="password"
                 @keydown.enter.prevent />
             </n-form-item-row>
-            <n-form-item-row label="角色">
+            <!-- <n-form-item-row label="角色">
               <n-radio-group v-model:value="role" name="radiogroup">
                 <n-space>
                   <n-radio
@@ -42,7 +42,7 @@
                   </n-radio>
                 </n-space>
               </n-radio-group>
-            </n-form-item-row>
+            </n-form-item-row> -->
           </n-form>
           <n-button type="primary" block secondary strong @click="login">
             登录
@@ -72,7 +72,7 @@
                 v-model:value="confirmSignupPassword"
                 @keydown.enter.prevent />
             </n-form-item-row>
-            <n-form-item-row label="角色">
+            <!-- <n-form-item-row label="角色">
               <n-radio-group v-model:value="signupRole" name="radiogroup">
                 <n-space>
                   <n-radio
@@ -83,7 +83,7 @@
                   </n-radio>
                 </n-space>
               </n-radio-group>
-            </n-form-item-row>
+            </n-form-item-row> -->
           </n-form>
           <n-button type="primary" block secondary strong @click="signup">
             注册
@@ -101,41 +101,44 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 const message = useMessage()
 //登录
-const roles = [
-  {
-    label: '用户',
-    value: 'user',
-  },
-  {
-    label: '执行人',
-    value: 'executor',
-  },
-  {
-    label: '经理',
-    value: 'manager',
-  },
-  {
-    label: '现场工作人员',
-    value: 'operator',
-  },
-]
+// const roles = [
+//   {
+//     label: '用户',
+//     value: 'user',
+//   },
+//   {
+//     label: '执行人',
+//     value: 'executor',
+//   },
+//   {
+//     label: '经理',
+//     value: 'manager',
+//   },
+//   {
+//     label: '现场工作人员',
+//     value: 'operator',
+//   },
+// ]
 
 const role = ref<string>('')
 const username = ref<string>('')
 const password = ref<string>('')
 const signupUsername = ref<string>('')
 const signupPassword = ref<string>('')
-const signupRole = ref<string>('')
 const activeTab = ref<string>('login')
 const confirmSignupPassword = ref<string>('')
 const login = async () => {
+  if (username.value == '' || password.value == '') {
+    message.error('账号或者密码不能为空！')
+    return
+  }
   try {
     const res = await axios.post('/backend/login', {
       username: username.value,
       password: password.value,
-      role: role.value,
     })
     if (res.data.msg === '登录成功') {
+      role.value = res.data.data.role
       setRole(role.value)
       setUser(username.value)
       if (role.value === 'user') {
@@ -158,7 +161,6 @@ const signup = async () => {
     const res = await axios.post('/backend/signup', {
       username: signupUsername.value,
       password: signupPassword.value,
-      role: signupRole.value,
     })
     if (res.data.msg === 'success') {
       message.success('注册成功。')

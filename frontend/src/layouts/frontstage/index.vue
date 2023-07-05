@@ -86,6 +86,18 @@ const menuOptions: MenuOption[] = [
     key: 'questionnaire',
     icon: renderIcon(BookIcon),
   },
+  {
+    label: () =>
+      h(
+        RouterLink,
+        {
+          to: { path: '/frontstage/profile' },
+        },
+        { default: () => '个人信息' }
+      ),
+    key: 'profile',
+    icon: renderIcon(BookIcon),
+  },
 ]
 //FIXME: 路由刷新后菜单项的活跃路由问题
 // const route = useRoute()

@@ -31,4 +31,12 @@ export const userRoutes: RouteRecordRaw[] = [
       ),
     meta: { requiredAuth: true, title: '调查问卷', role: 'user' },
   },
+  {
+    path: '/frontstage/profile', // 个人信息
+    component: () =>
+      import(
+        /* webpackChunkName: "profile" */ '@/pages/frontstage/profile/index.vue'
+      ),
+    meta: { requiredAuth: true, title: '个人信息', role: 'user' },
+  },
 ]

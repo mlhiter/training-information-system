@@ -10,19 +10,18 @@
     "moduleResolution": "Node",
     "strict": true,
     "jsx": "preserve",
+    "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "esModuleInterop": true,
+    // "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
-    "noEmit": true,
     "types": ["vite/client", "node", "unplugin-icons/types/vue"],
     "paths": {
       "~/*": ["/*"],
       "@/*": ["src/*"],
       "#/*": ["types/*"]
     },
-    // TODO:这里的unplugin-icons处理有点问题
     "typeRoots": ["./node_modules/@types/", "./types/"]
   },
   "include": ["src/**/*.ts", "types/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
