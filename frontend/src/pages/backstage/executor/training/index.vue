@@ -40,7 +40,7 @@
           <n-input v-model:value="formValue.place" placeholder="请输入地点" />
         </n-form-item>
         <n-form-item label="讲师id" path="lecturerId">
-          <n-input
+          <n-input-number
             v-model:value="formValue.lecturerId"
             placeholder="请输入讲师id" />
         </n-form-item>
@@ -145,29 +145,30 @@ const deleteCourse = async (id: number) => {
   }
 }
 const showModal = ref(false)
+const formValue = ref({
+  name: '',
+  time: '',
+  place: '',
+  lecturerId: null,
+  lecturer: '',
+  price: null,
+})
 const addCourse = async () => {
   try {
+    console.log(formValue.value)
     const res = await axios.post('/backend/training/add', formValue.value)
     if (res.data.msg === 'success') {
       showModal.value = false
       message.success('新增成功！')
       fetchRenderData()
     }
+    message.info(res.data)
   } catch (error) {
     console.log(error)
     showModal.value = false
-    message.success('新增成功！')
-    // message.error('新增失败，讲师信息错误！')
+    message.error('新增失败！')
   }
 }
-const formValue = ref({
-  name: '',
-  time: '',
-  place: '',
-  lecturerId: '',
-  lecturer: '',
-  price: null,
-})
 </script>
 
 <style lang="sass" scoped></style>
