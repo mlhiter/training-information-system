@@ -1,9 +1,10 @@
 <template>
   <n-dropdown :options="options" class="font-serif text-3xl" @select="logout">
-    <div>
+    <div class="flex-row flex justify-center items-center">
       <n-icon size="30">
         <icon-bx-user></icon-bx-user>
       </n-icon>
+      <div>{{ username }}</div>
     </div>
   </n-dropdown>
 </template>
@@ -12,7 +13,9 @@
 import { NIcon, useMessage } from 'naive-ui'
 import { LogOutOutline as LogoutIcon } from '@vicons/ionicons5'
 import router from '@/router'
+import { getUser } from '@/utils/token'
 const message = useMessage()
+const username = getUser()
 const renderIcon = (icon: Component) => {
   return () => {
     return h(NIcon, null, {

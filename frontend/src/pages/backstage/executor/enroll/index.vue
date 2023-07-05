@@ -18,6 +18,10 @@ const selectOptions = [
   { label: '通过', key: 'passed' },
   { label: '拒绝', key: 'rejected' },
 ]
+const statusMapping = {
+  passed:'通过',
+  rejected:'拒绝',
+} as any;
 const columns: DataTableColumns = [
   {
     title: '报名ID',
@@ -54,6 +58,13 @@ const columns: DataTableColumns = [
   {
     title: '审核状态',
     key: 'status',
+    render(row: any) {
+      const chineseStatus = statusMapping[row.status]|| row.status; // 获取对应的中文角色，如果映射表中不存在，则保持原值
+      return h(
+        'span', // 使用一个span标签来包裹显示的文本
+        chineseStatus // 中文角色
+      );
+    },
   },
   {
     title: '操作',
