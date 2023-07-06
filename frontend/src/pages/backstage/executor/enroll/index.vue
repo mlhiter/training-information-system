@@ -28,32 +28,8 @@ const columns: DataTableColumns = [
     key: 'ID',
   },
   {
-    title: '姓名',
-    key: 'name',
-  },
-  {
     title: '课程名',
     key: 'courseName',
-  },
-  {
-    title: '性别',
-    key: 'sex',
-  },
-  {
-    title: '公司',
-    key: 'company',
-  },
-  {
-    title: '职位',
-    key: 'post',
-  },
-  {
-    title: '技术水平',
-    key: 'level',
-  },
-  {
-    title: '邮箱',
-    key: 'contact',
   },
   {
     title: '审核状态',

@@ -5,7 +5,7 @@
       class="w-4/5 h-4/5 shadow-md rounded-2xl">
       <n-layout-header bordered class="h-60px flex items-center">
         <n-image src="/favicon.svg" class="w-150px"></n-image>
-        <div class="text-3xl font-mono">浩奇培训信息管理系统——前台</div>
+        <div class="text-3xl font-mono">浩奇培训报名管理系统——前台</div>
         <div class="ml-540px"><User /></div>
       </n-layout-header>
       <n-layout has-sider class="h-4/5">

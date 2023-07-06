@@ -5,7 +5,7 @@
     <n-card class="w-120" style="margin: 0 auto">
       <n-space class="mb-10" align="center" justify="center">
         <n-image width="50" src="/favicon.svg"></n-image>
-        <div class="text-3xl font-serif text-center">浩奇培训信息管理系统</div>
+        <div class="text-3xl font-serif text-center">浩奇培训报名管理系统</div>
       </n-space>
       <n-tabs
         class="pl-4px"
