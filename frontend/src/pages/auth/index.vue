@@ -133,23 +133,20 @@ const login = async () => {
     return
   }
   try {
-    // const res = await axios.post('/backend/login', {
-    //   username: username.value,
-    //   password: password.value,
-    // })
-    // if (res.data.msg === '登录成功') {
-    //   role.value = res.data.data.role
-    //   setRole(role.value)
-    //   setUser(username.value)
-    //   if (role.value === 'user') {
-    //     router.push('/frontstage')
-    //   } else {
-    //     router.push('/backstage')
-    //   }
-    // }
-    router.push('/frontstage')
-    setRole('user')
-    setUser('lt')
+    const res = await axios.post('/backend/login', {
+      username: username.value,
+      password: password.value,
+    })
+    if (res.data.msg === '登录成功') {
+      role.value = res.data.data.role
+      setRole(role.value)
+      setUser(username.value)
+      if (role.value === 'user') {
+        router.push('/frontstage')
+      } else {
+        router.push('/backstage')
+      }
+    }
   } catch (error) {
     console.log(error)
     message.error('登录失败！')
