@@ -70,10 +70,6 @@ const pagination = {
 }
 const columns: DataTableColumns = [
   {
-    title: '课程ID',
-    key: 'ID',
-  },
-  {
     title: '课程名',
     key: 'name',
   },
@@ -86,10 +82,6 @@ const columns: DataTableColumns = [
     key: 'place',
   },
 
-  {
-    title: '讲师ID',
-    key: 'lecturerId',
-  },
   {
     title: '讲师名称',
     key: 'lecturer',

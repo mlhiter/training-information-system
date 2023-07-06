@@ -89,13 +89,14 @@ const handleProfile = async () => {
       username,
       ...individualFormValue.value,
     })
-    if (res.data.msg == '已提交个人信息') {
+    if (res.data.msg == '提交成功') {
       fetchProfileData()
       message.success('已提交个人信息')
       change.value = true
     }
   } catch (error) {
     console.log(error)
+    change.value = true
   }
 }
 const fetchProfileData = async () => {

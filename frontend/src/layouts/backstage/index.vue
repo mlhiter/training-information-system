@@ -167,7 +167,7 @@ onBeforeMount(() => {
       break
     case 'manager':
       menuOptions = managerMenuOptions
-      router.push('/backstage/manager/enroll')
+      router.push('/backstage/manager/report')
       break
     case 'operator':
       menuOptions = operatorMenuOptions
