@@ -62,18 +62,18 @@ const menuOptions: MenuOption[] = [
   //   key: 'pay',
   //   icon: renderIcon(BookIcon),
   // },
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: { path: '/frontstage/inplace' },
-        },
-        { default: () => '签到' }
-      ),
-    key: 'inplace',
-    icon: renderIcon(BookIcon),
-  },
+  // {
+  //   label: () =>
+  //     h(
+  //       RouterLink,
+  //       {
+  //         to: { path: '/frontstage/inplace' },
+  //       },
+  //       { default: () => '签到' }
+  //     ),
+  //   key: 'inplace',
+  //   icon: renderIcon(BookIcon),
+  // },
   {
     label: () =>
       h(

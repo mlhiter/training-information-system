@@ -1,8 +1,6 @@
 <template>
   <div>
     <n-card title="个人信息" v-if="change">
-      id:{{ profile.id }}
-      <br />
       姓名:{{ profile.name }}
       <br />
       性别:{{ profile.sex }}
@@ -65,10 +63,10 @@
 
 <script lang="ts" setup>
 import { getUser } from '@/utils/token'
-
+import { useMessage } from 'naive-ui'
+const message = useMessage()
 const change = ref(false)
 const profile = ref({
-  id: '',
   name: '',
   sex: '',
   company: '',
@@ -87,12 +85,13 @@ const individualFormValue = ref({
 const username = getUser()
 const handleProfile = async () => {
   try {
-    const res = await axios.post(
-      `/backend/user/info?username=${username}`,
-      individualFormValue.value
-    )
-    if (res.data.msg == 'success') {
+    const res = await axios.post(`/backend/user/info`, {
+      username,
+      ...individualFormValue.value,
+    })
+    if (res.data.msg == '已提交个人信息') {
       fetchProfileData()
+      message.success('已提交个人信息')
       change.value = true
     }
   } catch (error) {
@@ -102,8 +101,9 @@ const handleProfile = async () => {
 const fetchProfileData = async () => {
   try {
     const res = await axios.get(`/backend/user/info/get?username=${username}`)
-    if (res.data.msg == 'success') {
+    if (res.data.code == 200) {
       change.value = true
+      profile.value = res.data.data
     }
   } catch (error) {
     // 拿不到数据就显示填写个人信息界面
@@ -112,9 +112,9 @@ const fetchProfileData = async () => {
   }
 }
 fetchProfileData()
-// onDeactivated(() => {
-//   change.value = true
-// })
+onDeactivated(() => {
+  change.value = true
+})
 </script>
 
 <style lang="sass" scoped></style>

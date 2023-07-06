@@ -17,13 +17,11 @@ const pagination = {
 const selectOptions = () => [
   { label: '用户', key: 'user' },
   { label: '执行人', key: 'executor' },
-  { label: '现场工作人员', key: 'operator' },
   { label: '经理', key: 'manager' },
 ]
 const roleMapping = {
   user: '用户',
   executor: '执行人',
-  operator: '现场工作人员',
   manager: '经理',
 } as any;
 const columns: DataTableColumns = [
