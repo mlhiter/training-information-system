@@ -50,18 +50,18 @@ const menuOptions: MenuOption[] = [
     key: 'enroll',
     icon: renderIcon(BookIcon),
   },
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: { path: '/frontstage/pay' },
-        },
-        { default: () => '缴费' }
-      ),
-    key: 'pay',
-    icon: renderIcon(BookIcon),
-  },
+  // {
+  //   label: () =>
+  //     h(
+  //       RouterLink,
+  //       {
+  //         to: { path: '/frontstage/pay' },
+  //       },
+  //       { default: () => '缴费' }
+  //     ),
+  //   key: 'pay',
+  //   icon: renderIcon(BookIcon),
+  // },
   {
     label: () =>
       h(

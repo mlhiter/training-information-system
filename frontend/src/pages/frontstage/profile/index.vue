@@ -1,146 +1,120 @@
 <template>
   <div>
-    <n-card
-      title="请选择你想要报名的种类："
-      style="margin-bottom: 16px"
-      v-if="change">
-      <n-tabs type="line" animated>
-        <n-tab-pane name="individual" tab="个人">
-          <n-form ref="formRef" :label-width="80" :model="individualFormValue">
-            <n-form-item label="课程名称" path="courseName">
-              <n-input
-                v-model:value="individualFormValue.courseName"
-                placeholder="输入课程名称" />
-            </n-form-item>
-            <n-form-item label="姓名" path="name">
-              <n-input
-                v-model:value="individualFormValue.name"
-                placeholder="输入姓名" />
-            </n-form-item>
-            <n-form-item label="性别" path="sex">
-              <n-input
-                v-model:value="individualFormValue.sex"
-                placeholder="请输入性别" />
-            </n-form-item>
-            <n-form-item label="公司" path="company">
-              <n-input
-                v-model:value="individualFormValue.company"
-                placeholder="请输入公司" />
-            </n-form-item>
-            <n-form-item label="职位" path="post">
-              <n-input
-                v-model:value="individualFormValue.post"
-                placeholder="请输入职位" />
-            </n-form-item>
-            <n-form-item label="技能水平" path="level">
-              <n-input
-                v-model:value="individualFormValue.level"
-                placeholder="请输入技能水平" />
-            </n-form-item>
-            <n-form-item label="邮箱" path="contact">
-              <n-input
-                v-model:value="individualFormValue.contact"
-                placeholder="请输入邮箱" />
-            </n-form-item>
-            <n-form-item>
-              <n-button
-                attr-type="button"
-                type="success"
-                @click="handleEnrollIndividual">
-                提交报名信息
-              </n-button>
-            </n-form-item>
-          </n-form>
-        </n-tab-pane>
-        <n-tab-pane name="organization" tab="组织">
-          <n-form :label-width="80" :model="organizationFormValue">
-            <n-form-item label="公司名称" path="applicant">
-              <n-input
-                v-model:value="organizationFormValue.applicant"
-                placeholder="输入公司名称" />
-            </n-form-item>
-            <n-form-item label="申请时间" path="trainingDate">
-              <n-input
-                v-model:value="organizationFormValue.trainingDate"
-                placeholder="输入申请时间" />
-            </n-form-item>
-            <n-form-item label="申请课程" path="trainingContext">
-              <n-input
-                v-model:value="organizationFormValue.trainingContext"
-                placeholder="请输入申请课程" />
-            </n-form-item>
-            <n-form-item label="申请人数" path="numberOfPeople">
-              <n-input
-                v-model:value="organizationFormValue.numberOfPeople"
-                placeholder="请输入申请人数" />
-            </n-form-item>
-            <n-form-item>
-              <n-button
-                attr-type="button"
-                type="success"
-                @click="handleEnrollOrganization">
-                提交报名信息
-              </n-button>
-            </n-form-item>
-          </n-form>
-        </n-tab-pane>
-      </n-tabs>
+    <n-card title="个人信息" v-if="change">
+      id:{{ profile.id }}
+      <br />
+      姓名:{{ profile.name }}
+      <br />
+      性别:{{ profile.sex }}
+      <br />
+      邮箱:{{ profile.contact }}
+      <br />
+      公司:{{ profile.company }}
+      <br />
+      职位:{{ profile.post }}
+      <br />
+      技能水平:{{ profile.level }}
+      <br />
+      <template #action>
+        <n-button attr-type="button" type="success" @click="change = false">
+          修改个人信息
+        </n-button>
+      </template>
     </n-card>
-    <n-alert title="Success" type="success" v-else>
-      报名成功，请前往缴费页面进行缴费。
-    </n-alert>
+    <n-card title="请填写个人信息：" style="margin-bottom: 16px" v-else>
+      <n-form ref="formRef" :label-width="80" :model="individualFormValue">
+        <n-form-item label="姓名" path="name">
+          <n-input
+            v-model:value="individualFormValue.name"
+            placeholder="输入姓名" />
+        </n-form-item>
+        <n-form-item label="性别" path="sex">
+          <n-input
+            v-model:value="individualFormValue.sex"
+            placeholder="请输入性别" />
+        </n-form-item>
+        <n-form-item label="公司" path="company">
+          <n-input
+            v-model:value="individualFormValue.company"
+            placeholder="请输入公司" />
+        </n-form-item>
+        <n-form-item label="职位" path="post">
+          <n-input
+            v-model:value="individualFormValue.post"
+            placeholder="请输入职位" />
+        </n-form-item>
+        <n-form-item label="技能水平" path="level">
+          <n-input
+            v-model:value="individualFormValue.level"
+            placeholder="请输入技能水平" />
+        </n-form-item>
+        <n-form-item label="邮箱" path="contact">
+          <n-input
+            v-model:value="individualFormValue.contact"
+            placeholder="请输入邮箱" />
+        </n-form-item>
+        <n-form-item>
+          <n-button attr-type="button" type="success" @click="handleProfile">
+            提交个人信息
+          </n-button>
+        </n-form-item>
+      </n-form>
+    </n-card>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { getUser } from '@/utils/token'
 
-const change = ref(true)
-const individualFormValue = ref({
-  courseName: '',
+const change = ref(false)
+const profile = ref({
+  id: '',
   name: '',
   sex: '',
   company: '',
   post: '',
   level: '',
   contact: '',
-  status: 'unhandled',
 })
-const organizationFormValue = ref({
-  applicant: '',
-  trainingDate: '',
-  trainingContext: '',
-  numberOfPeople: null,
-  status: 'unhandled',
+const individualFormValue = ref({
+  name: '',
+  sex: '',
+  company: '',
+  post: '',
+  level: '',
+  contact: '',
 })
-const handleEnrollIndividual = async () => {
+const username = getUser()
+const handleProfile = async () => {
   try {
     const res = await axios.post(
-      '/backend/enroll/individual',
+      `/backend/user/info?username=${username}`,
       individualFormValue.value
     )
     if (res.data.msg == 'success') {
-      change.value = false
+      fetchProfileData()
+      change.value = true
     }
   } catch (error) {
     console.log(error)
   }
 }
-const handleEnrollOrganization = async () => {
+const fetchProfileData = async () => {
   try {
-    const res = await axios.post(
-      '/backend/enroll/organisation',
-      organizationFormValue.value
-    )
+    const res = await axios.get(`/backend/user/info/get?username=${username}`)
     if (res.data.msg == 'success') {
-      change.value = false
+      change.value = true
     }
   } catch (error) {
+    // 拿不到数据就显示填写个人信息界面
+    change.value = false
     console.log(error)
   }
 }
-onDeactivated(() => {
-  change.value = true
-})
+fetchProfileData()
+// onDeactivated(() => {
+//   change.value = true
+// })
 </script>
 
 <style lang="sass" scoped></style>
