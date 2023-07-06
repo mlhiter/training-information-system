@@ -35,14 +35,14 @@
             v-model:value="formValue.name"
             placeholder="输入执行人姓名" />
         </n-form-item>
-        <n-form-item label="管理课程" path="course">
+        <!-- <n-form-item label="管理课程" path="course">
           <n-input v-model:value="formValue.course" placeholder="请输入管理的课程" />
         </n-form-item>
         <n-form-item label="工作状况" path="condition">
           <n-input
             v-model:value="formValue.condition"
             placeholder="请输入工作状况" />
-        </n-form-item>
+        </n-form-item> -->
       </n-form>
       <template #action>
         <n-button type="primary" @click="addExecutor">提交</n-button>
@@ -66,14 +66,14 @@ const columns: DataTableColumns = [
     title: '姓名',
     key: 'name',
   },
-  {
-    title: '管理课程',
-    key: 'course',
-  },
-  {
-    title: '工作状况',
-    key: 'condition',
-  },
+  // {
+  //   title: '管理课程',
+  //   key: 'course',
+  // },
+  // {
+  //   title: '工作状况',
+  //   key: 'condition',
+  // },
   {
     title: '操作',
     key: 'actions',
@@ -136,8 +136,8 @@ const addExecutor = async () => {
 }
 const formValue = ref({
   name: '',
-  course: '',
-  condition: '',
+  // course: '',
+  // condition: '',
 })
 </script>
 

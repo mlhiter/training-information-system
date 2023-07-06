@@ -27,9 +27,12 @@
             placeholder="输入姓名" />
         </n-form-item>
         <n-form-item label="性别" path="sex">
-          <n-input
+          <!-- <n-input
             v-model:value="individualFormValue.sex"
-            placeholder="请输入性别" />
+            placeholder="请输入性别" /> -->
+          <n-select
+            v-model:value="individualFormValue.sex"
+            :options="sexOptions" />
         </n-form-item>
         <n-form-item label="公司" path="company">
           <n-input
@@ -66,6 +69,10 @@ import { getUser } from '@/utils/token'
 import { useMessage } from 'naive-ui'
 const message = useMessage()
 const change = ref(false)
+const sexOptions = [
+  { label: '男', value: '男' },
+  { label: '女', value: '女' },
+]
 const profile = ref({
   name: '',
   sex: '',

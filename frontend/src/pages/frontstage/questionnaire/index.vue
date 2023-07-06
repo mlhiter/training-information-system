@@ -8,9 +8,9 @@
             placeholder="输入姓名" />
         </n-form-item>
         <n-form-item label="课程名" path="courseName">
-          <n-input
+          <n-select
             v-model:value="formValue.courseName"
-            placeholder="请输入课程名" />
+            :options="selectedCourseOptions" />
         </n-form-item>
         <n-form-item label="满意度" path="satisfaction">
           <n-input-number
@@ -37,6 +37,8 @@
 </template>
 
 <script lang="ts" setup>
+import { getUser } from '@/utils/token'
+
 const formValue = ref({
   studentName: '',
   courseName: '',
@@ -55,6 +57,21 @@ const handleSubmit = async () => {
     console.log(error)
   }
 }
+const username = getUser()
+const selectedCourseOptions = ref([{ label: '', value: '' }])
+const fetchSelectedCourseList = async () => {
+  try {
+    const res = await axios.get(`/backend/course/selected?username=${username}`)
+    if (res.data.msg == 'success') {
+      selectedCourseOptions.value = Array.from(res.data.data, (item) => {
+        return { label: item as string, value: item as string }
+      })
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+fetchSelectedCourseList()
 onDeactivated(() => {
   change.value = true
 })

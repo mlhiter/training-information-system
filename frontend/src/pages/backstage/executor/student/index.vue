@@ -34,7 +34,7 @@
           <n-input v-model:value="formValue.name" placeholder="输入学员姓名" />
         </n-form-item>
         <n-form-item label="性别" path="sex">
-          <n-input v-model:value="formValue.sex" placeholder="请输入性别" />
+          <n-select v-model:value="formValue.sex" :options="sexOptions" />
         </n-form-item>
         <n-form-item label="邮箱" path="contact">
           <n-input v-model:value="formValue.contact" placeholder="请输入邮箱" />
@@ -59,6 +59,10 @@
 <script lang="ts" setup>
 import { DataTableColumns, NButton, useMessage } from 'naive-ui'
 const message = useMessage()
+const sexOptions = [
+  { label: '男', value: '男' },
+  { label: '女', value: '女' },
+]
 const pagination = {
   pageSize: 10,
 }
