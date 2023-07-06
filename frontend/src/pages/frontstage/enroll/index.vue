@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { getUser } from '@/utils/token';
+import { getUser } from '@/utils/token'
 import { useMessage } from 'naive-ui'
 
 const showModal = ref(false)
@@ -58,11 +58,14 @@ const change = ref(true)
 const courseName = ref('')
 const message = useMessage()
 const options = ref([{ label: '', value: '' }])
-const selectedCourses = ref([])
+const selectedCourses = ref<string[]>([])
 const handleEnrollIndividual = async () => {
   try {
-    const res = await axios.post('/backend/enroll/individual', courseName.value)
+    const res = await axios.post('/backend/enroll/individual', {
+      courseName: courseName.value,
+    })
     if (res.data.msg == 'success') {
+      message.success('选课成功！')
       change.value = false
       showModal.value = false
     }
@@ -88,8 +91,8 @@ const fetchSelectedCourseList = async () => {
   try {
     const res = await axios.get(`/backend/course/selected?username=${username}`)
     if (res.data.msg == 'success') {
-      options.value = Array.from(res.data.data, (item) => {
-        return { label: item as string, value: item as string }
+      selectedCourses.value = Array.from(res.data.data, (item: any) => {
+        return item.courseName as string
       })
     }
   } catch (error) {

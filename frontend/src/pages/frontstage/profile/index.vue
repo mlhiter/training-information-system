@@ -96,6 +96,7 @@ const handleProfile = async () => {
     }
   } catch (error) {
     console.log(error)
+    message.error('提交失败')
     change.value = true
   }
 }
