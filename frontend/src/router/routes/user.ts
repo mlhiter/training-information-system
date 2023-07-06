@@ -10,20 +10,6 @@ export const userRoutes: RouteRecordRaw[] = [
     meta: { requiredAuth: true, title: '报名', role: 'user' },
   },
   {
-    path: '/frontstage/pay', // 缴费
-    component: () =>
-      import(/* webpackChunkName: "pay" */ '@/pages/frontstage/pay/index.vue'),
-    meta: { requiredAuth: true, title: '缴费', role: 'user' },
-  },
-  {
-    path: '/frontstage/inplace', // 签到
-    component: () =>
-      import(
-        /* webpackChunkName: "inplace" */ '@/pages/frontstage/inplace/index.vue'
-      ),
-    meta: { requiredAuth: true, title: '签到', role: 'user' },
-  },
-  {
     path: '/frontstage/questionnaire', // 调查问卷
     component: () =>
       import(

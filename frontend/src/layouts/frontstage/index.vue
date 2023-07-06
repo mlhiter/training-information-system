@@ -33,7 +33,6 @@ import { MenuOption, NIcon } from 'naive-ui'
 import { RouterLink } from 'vue-router'
 import { BookOutline as BookIcon } from '@vicons/ionicons5'
 import User from '../components/user.vue'
-// import { useRoute } from 'vue-router'
 function renderIcon(icon: Component) {
   return () => h(NIcon, null, { default: () => h(icon) })
 }
@@ -50,30 +49,6 @@ const menuOptions: MenuOption[] = [
     key: 'enroll',
     icon: renderIcon(BookIcon),
   },
-  // {
-  //   label: () =>
-  //     h(
-  //       RouterLink,
-  //       {
-  //         to: { path: '/frontstage/pay' },
-  //       },
-  //       { default: () => '缴费' }
-  //     ),
-  //   key: 'pay',
-  //   icon: renderIcon(BookIcon),
-  // },
-  // {
-  //   label: () =>
-  //     h(
-  //       RouterLink,
-  //       {
-  //         to: { path: '/frontstage/inplace' },
-  //       },
-  //       { default: () => '签到' }
-  //     ),
-  //   key: 'inplace',
-  //   icon: renderIcon(BookIcon),
-  // },
   {
     label: () =>
       h(

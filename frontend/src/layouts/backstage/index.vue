@@ -144,20 +144,6 @@ const managerMenuOptions: MenuOption[] = [
     icon: renderIcon(BookIcon),
   },
 ]
-const operatorMenuOptions: MenuOption[] = [
-  {
-    label: () =>
-      h(
-        RouterLink,
-        {
-          to: { path: '/backstage/operator' },
-        },
-        { default: () => '学生名单' }
-      ),
-    key: 'index',
-    icon: renderIcon(BookIcon),
-  },
-]
 onBeforeMount(() => {
   console.log(role)
   switch (role) {
@@ -168,10 +154,6 @@ onBeforeMount(() => {
     case 'manager':
       menuOptions = managerMenuOptions
       router.push('/backstage/manager/report')
-      break
-    case 'operator':
-      menuOptions = operatorMenuOptions
-      router.push('/backstage/operator')
       break
     default:
       break
