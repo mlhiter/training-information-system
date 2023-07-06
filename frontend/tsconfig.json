@@ -10,13 +10,14 @@
     "moduleResolution": "Node",
     "strict": true,
     "jsx": "preserve",
-    "sourceMap": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    // "esModuleInterop": true,
+    "esModuleInterop": true,
     "lib": ["ESNext", "DOM"],
     "skipLibCheck": true,
-    "types": ["vite/client", "node", "unplugin-icons/types/vue"],
+    "noEmit": true,
+    // FIXME:types配置问题
+    "types": ["node"],
     "paths": {
       "~/*": ["/*"],
       "@/*": ["src/*"],
