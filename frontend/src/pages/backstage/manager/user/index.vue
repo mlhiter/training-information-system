@@ -23,7 +23,7 @@ const roleMapping = {
   user: '用户',
   executor: '执行人',
   manager: '经理',
-} as any;
+} as any
 const columns: DataTableColumns = [
   {
     title: '用户ID',
@@ -37,11 +37,11 @@ const columns: DataTableColumns = [
     title: '用户权限',
     key: 'role',
     render(row: any) {
-      const chineseRole = roleMapping[row.role]|| row.role; // 获取对应的中文角色，如果映射表中不存在，则保持原值
+      const chineseRole = roleMapping[row.role] || row.role // 获取对应的中文角色，如果映射表中不存在，则保持原值
       return h(
         'span', // 使用一个span标签来包裹显示的文本
         chineseRole // 中文角色
-      );
+      )
     },
   },
   {
@@ -97,8 +97,8 @@ const changeRole = async (username: string, role: string) => {
       role: role,
     })
     if (res.data.msg === 'success') {
-      message.success('修改成功')
       fetchRenderData()
+      message.success('修改成功')
     }
   } catch (error) {
     console.log(error)

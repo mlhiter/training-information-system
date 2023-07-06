@@ -65,9 +65,10 @@ const handleEnrollIndividual = async () => {
       courseName: courseName.value,
     })
     if (res.data.msg == 'success') {
-      message.success('选课成功！')
+      fetchSelectedCourseList()
       change.value = false
       showModal.value = false
+      message.success('选课成功！')
     }
   } catch (error) {
     message.error('提交失败，请先填写个人信息！')

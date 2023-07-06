@@ -36,12 +36,12 @@
             placeholder="输入执行人姓名" />
         </n-form-item>
         <n-form-item label="管理课程" path="course">
-          <n-input v-model:value="formValue.course" placeholder="请输入职称" />
+          <n-input v-model:value="formValue.course" placeholder="请输入管理的课程" />
         </n-form-item>
         <n-form-item label="工作状况" path="condition">
           <n-input
             v-model:value="formValue.condition"
-            placeholder="请输入职称" />
+            placeholder="请输入工作状况" />
         </n-form-item>
       </n-form>
       <template #action>
@@ -109,7 +109,7 @@ const deleteExecutor = async (id: number) => {
       url: '/backend/executor/delete',
       method: 'delete',
       data: {
-        id,
+        id:id,
       },
     })
     if (res.data.msg === 'success') {
@@ -117,6 +117,7 @@ const deleteExecutor = async (id: number) => {
       fetchRenderData()
     }
   } catch (error) {
+    message.error('删除失败！')
     console.log(error)
   }
 }
