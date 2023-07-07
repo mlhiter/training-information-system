@@ -32,7 +32,7 @@
       <n-form ref="formRef" :label-width="80" :model="formValue">
         <n-form-item label="执行人姓名" path="name">
           <n-input
-            v-model:value="formValue.name"
+            v-model:value="formValue.UserName"
             placeholder="输入执行人姓名" />
         </n-form-item>
         <!-- <n-form-item label="管理课程" path="course">
@@ -64,7 +64,7 @@ const columns: DataTableColumns = [
   },
   {
     title: '姓名',
-    key: 'name',
+    key: 'username',
   },
   // {
   //   title: '管理课程',
@@ -135,7 +135,7 @@ const addExecutor = async () => {
   }
 }
 const formValue = ref({
-  name: '',
+  UserName: '',
   // course: '',
   // condition: '',
 })
