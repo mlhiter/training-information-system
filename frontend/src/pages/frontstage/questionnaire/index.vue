@@ -66,6 +66,9 @@ const fetchSelectedCourseList = async () => {
       selectedCourseOptions.value = Array.from(res.data.data, (item) => {
         return { label: item as string, value: item as string }
       })
+      if (res.data.data == null) {
+        selectedCourseOptions.value = [{ label: '未选课', value: '未选课' }]
+      }
     }
   } catch (error) {
     console.log(error)
